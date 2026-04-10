@@ -152,3 +152,6 @@ D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Deb
 D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\ExamPortal.Application.pdb
 D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\ExamPortal.Infrastructure.pdb
 D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\ExamPortal.Domain.pdb
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\MediatR.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\MediatR.Contracts.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

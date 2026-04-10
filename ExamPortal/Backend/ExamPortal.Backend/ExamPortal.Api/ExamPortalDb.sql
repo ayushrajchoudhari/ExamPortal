@@ -99,78 +99,155 @@ CREATE TABLE UserAnswers (
 USE ExamPortalDb;
 GO
 
--- 1. Declare variables to maintain referential integrity across all inserts
+-- 1. Declare Tenant and Users
 DECLARE @TenantId UNIQUEIDENTIFIER = NEWID();
-DECLARE @AdminUserId UNIQUEIDENTIFIER = NEWID();
-DECLARE @StudentUserId UNIQUEIDENTIFIER = NEWID();
-DECLARE @ExamSetId UNIQUEIDENTIFIER = NEWID();
-DECLARE @InstructionSetId UNIQUEIDENTIFIER = NEWID();
+DECLARE @AdminId UNIQUEIDENTIFIER = NEWID();
+DECLARE @Student1 UNIQUEIDENTIFIER = NEWID();
+DECLARE @Student2 UNIQUEIDENTIFIER = NEWID();
+DECLARE @Student3 UNIQUEIDENTIFIER = NEWID();
+DECLARE @Student4 UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @Question1Id UNIQUEIDENTIFIER = NEWID();
-DECLARE @Question2Id UNIQUEIDENTIFIER = NEWID();
+-- 2. Declare ExamSets
+DECLARE @Exam1 UNIQUEIDENTIFIER = NEWID(); --.NET 8
+DECLARE @Exam2 UNIQUEIDENTIFIER = NEWID(); -- Angular 20
+DECLARE @Exam3 UNIQUEIDENTIFIER = NEWID(); -- EF Core
+DECLARE @Exam4 UNIQUEIDENTIFIER = NEWID(); -- SQL Server
+DECLARE @Exam5 UNIQUEIDENTIFIER = NEWID(); -- DevOps
 
-DECLARE @Q1_OptionA UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q1_OptionB UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q1_OptionC UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q1_OptionD UNIQUEIDENTIFIER = NEWID();
+-- 3. Declare QuestionSets (5 per Exam)
+DECLARE @E1Q1 UNIQUEIDENTIFIER = NEWID(), @E1Q2 UNIQUEIDENTIFIER = NEWID(), @E1Q3 UNIQUEIDENTIFIER = NEWID(), @E1Q4 UNIQUEIDENTIFIER = NEWID(), @E1Q5 UNIQUEIDENTIFIER = NEWID();
+DECLARE @E2Q1 UNIQUEIDENTIFIER = NEWID(), @E2Q2 UNIQUEIDENTIFIER = NEWID(), @E2Q3 UNIQUEIDENTIFIER = NEWID(), @E2Q4 UNIQUEIDENTIFIER = NEWID(), @E2Q5 UNIQUEIDENTIFIER = NEWID();
+DECLARE @E3Q1 UNIQUEIDENTIFIER = NEWID(), @E3Q2 UNIQUEIDENTIFIER = NEWID(), @E3Q3 UNIQUEIDENTIFIER = NEWID(), @E3Q4 UNIQUEIDENTIFIER = NEWID(), @E3Q5 UNIQUEIDENTIFIER = NEWID();
+DECLARE @E4Q1 UNIQUEIDENTIFIER = NEWID(), @E4Q2 UNIQUEIDENTIFIER = NEWID(), @E4Q3 UNIQUEIDENTIFIER = NEWID(), @E4Q4 UNIQUEIDENTIFIER = NEWID(), @E4Q5 UNIQUEIDENTIFIER = NEWID();
+DECLARE @E5Q1 UNIQUEIDENTIFIER = NEWID(), @E5Q2 UNIQUEIDENTIFIER = NEWID(), @E5Q3 UNIQUEIDENTIFIER = NEWID(), @E5Q4 UNIQUEIDENTIFIER = NEWID(), @E5Q5 UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @Q2_OptionA UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q2_OptionB UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q2_OptionC UNIQUEIDENTIFIER = NEWID();
-DECLARE @Q2_OptionD UNIQUEIDENTIFIER = NEWID();
-
+-- 4. Declare Correct Answer Options for Exam 1 (Needed to simulate the student attempt)
+DECLARE @E1Q1_Correct UNIQUEIDENTIFIER = NEWID();
+DECLARE @E1Q2_Correct UNIQUEIDENTIFIER = NEWID();
+DECLARE @E1Q3_Correct UNIQUEIDENTIFIER = NEWID();
+DECLARE @E1Q4_Correct UNIQUEIDENTIFIER = NEWID();
+DECLARE @E1Q5_Correct UNIQUEIDENTIFIER = NEWID();
 DECLARE @AttemptId UNIQUEIDENTIFIER = NEWID();
 
--- 2. Insert Tenant
+-- ==========================================
+-- INSERT DATA
+-- ==========================================
+
+-- Insert Tenant
 INSERT INTO Tenants (Id, Name, Domain, IsActive)
 VALUES (@TenantId, 'Global Tech University', 'globaltech.edu', 1);
 
--- 3. Insert Users (1 Admin, 1 Student)
--- Note: Passwords should be hashed in a real application.
+-- Insert Users (1 Admin, 4 Students)
 INSERT INTO Users (Id, TenantId, Role, Email, PasswordHash)
 VALUES 
-(@AdminUserId, @TenantId, 'Admin', 'admin@globaltech.edu', 'hashed_pw_admin_123'),
-(@StudentUserId, @TenantId, 'User', 'student@globaltech.edu', 'hashed_pw_student_456');
+(@AdminId, @TenantId, 'Admin', 'admin@globaltech.edu', 'hashed_pw_admin'),
+(@Student1, @TenantId, 'User', 'student1@globaltech.edu', 'hashed_pw_stu1'),
+(@Student2, @TenantId, 'User', 'student2@globaltech.edu', 'hashed_pw_stu2'),
+(@Student3, @TenantId, 'User', 'student3@globaltech.edu', 'hashed_pw_stu3'),
+(@Student4, @TenantId, 'User', 'student4@globaltech.edu', 'hashed_pw_stu4');
 
--- 4. Insert ExamSet
+-- Insert 5 ExamSets
 INSERT INTO ExamSets (Id, TenantId, Title, DurationMinutes, PassingScore, IsActive)
-VALUES (@ExamSetId, @TenantId, 'C# and.NET 8 Advanced Architecture', 60, 50.00, 1);
+VALUES 
+(@Exam1, @TenantId, 'C# and.NET 8 Advanced Architecture', 60, 50.00, 1),
+(@Exam2, @TenantId, 'Angular 20 & Signal State Management', 45, 60.00, 1),
+(@Exam3, @TenantId, 'Entity Framework Core Data Access', 30, 70.00, 1),
+(@Exam4, @TenantId, 'MS SQL Server Database Design', 90, 65.00, 1),
+(@Exam5, @TenantId, 'Azure DevOps & CI/CD Pipelines', 60, 50.00, 1);
 
--- 5. Insert InstructionSet
+-- Insert 5 InstructionSets
 INSERT INTO InstructionSets (Id, ExamSetId, Content, AgreementRequired)
-VALUES (@InstructionSetId, @ExamSetId, 'Please read all questions carefully. You cannot pause the timer once started. Navigating away from the window will result in termination.', 1);
+VALUES 
+(NEWID(), @Exam1, 'No pausing allowed. Window focus will be monitored.', 1),
+(NEWID(), @Exam2, 'Ensure stable internet. Signals knowledge required.', 1),
+(NEWID(), @Exam3, 'Read carefully. EF Core 8 specific syntax applies.', 1),
+(NEWID(), @Exam4, 'Database diagramming tools are not permitted.', 1),
+(NEWID(), @Exam5, 'Questions cover Azure, Docker, and GitHub Actions.', 1);
 
--- 6. Insert QuestionSets (2 Questions)
+-- Insert 25 QuestionSets
 INSERT INTO QuestionSets (Id, ExamSetId, QuestionText, Points, DisplayOrder)
 VALUES 
-(@Question1Id, @ExamSetId, 'Which Entity Framework Core feature automatically applies filtering to all queries for a specific entity, making it ideal for Multi-Tenancy?', 10.00, 1),
-(@Question2Id, @ExamSetId, 'What is the recommended Dependency Injection lifetime for an EF Core DbContext in an ASP.NET Core web application?', 10.00, 2);
+-- Exam 1 (.NET 8)
+(@E1Q1, @Exam1, 'Which DI lifetime creates a new instance per HTTP request?', 10.00, 1),
+(@E1Q2, @Exam1, 'What is the correct order for Auth middleware in Program.cs?', 10.00, 2),
+(@E1Q3, @Exam1, 'Which C# 12 feature is best for immutable DTOs?', 10.00, 3),
+(@E1Q4, @Exam1, 'How do you map a controller route dynamically?', 10.00, 4),
+(@E1Q5, @Exam1, 'Which layer holds business logic in Clean Architecture?', 10.00, 5),
+-- Exam 2 (Angular)
+(@E2Q1, @Exam2, 'What feature replaces NgModules in modern Angular?', 10.00, 1),
+(@E2Q2, @Exam2, 'Which Angular API handles synchronous state reactivity?', 10.00, 2),
+(@E2Q3, @Exam2, 'How do you remove Zone.js in Angular 20?', 10.00, 3),
+(@E2Q4, @Exam2, 'Which control flow block replaces *ngIf?', 10.00, 4),
+(@E2Q5, @Exam2, 'What hook triggers when a Signal changes?', 10.00, 5),
+-- Exam 3 (EF Core)
+(@E3Q1, @Exam3, 'Which method prevents EF Core from tracking fetched entities?', 10.00, 1),
+(@E3Q2, @Exam3, 'How do you enforce Multi-Tenancy automatically on all queries?', 10.00, 2),
+(@E3Q3, @Exam3, 'Which command generates models from an existing database?', 10.00, 3),
+(@E3Q4, @Exam3, 'What is the default tracking behavior of DbContext?', 10.00, 4),
+(@E3Q5, @Exam3, 'Which interface intercepts database saves in EF Core?', 10.00, 5),
+-- Exam 4 (SQL Server)
+(@E4Q1, @Exam4, 'Which index determines the physical sorting of a table?', 10.00, 1),
+(@E4Q2, @Exam4, 'What is the purpose of Normalization?', 10.00, 2),
+(@E4Q3, @Exam4, 'Which JOIN returns only matched rows from both tables?', 10.00, 3),
+(@E4Q4, @Exam4, 'What command builds an execution plan without running the query?', 10.00, 4),
+(@E4Q5, @Exam4, 'Which constraint prevents orphaned child records?', 10.00, 5),
+-- Exam 5 (DevOps)
+(@E5Q1, @Exam5, 'What does CI stand for in CI/CD?', 10.00, 1),
+(@E5Q2, @Exam5, 'Which file defines a Docker image environment?', 10.00, 2),
+(@E5Q3, @Exam5, 'What is a Blue/Green deployment?', 10.00, 3),
+(@E5Q4, @Exam5, 'In GitHub Actions, what triggers a workflow?', 10.00, 4),
+(@E5Q5, @Exam5, 'Where should sensitive connection strings be stored in Azure?', 10.00, 5);
 
--- 7. Insert AnswerOptions for Question 1
-INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect)
-VALUES 
-(@Q1_OptionA, @Question1Id, 'Global Query Filters (HasQueryFilter)', 1),
-(@Q1_OptionB, @Question1Id, 'Interceptor Pipeline', 0),
-(@Q1_OptionC, @Question1Id, 'DbContext.SetTenant()', 0),
-(@Q1_OptionD, @Question1Id, 'Data Annotations ()', 0);
+-- Insert Answer Options for Exam 1 (Using predefined Correct IDs)
+INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect) VALUES 
+(@E1Q1_Correct, @E1Q1, 'Scoped', 1), (NEWID(), @E1Q1, 'Transient', 0), (NEWID(), @E1Q1, 'Singleton', 0), (NEWID(), @E1Q1, 'Static', 0),
+(NEWID(), @E1Q2, 'UseAuthorization() then UseAuthentication()', 0), (@E1Q2_Correct, @E1Q2, 'UseAuthentication() then UseAuthorization()', 1), (NEWID(), @E1Q2, 'Order does not matter', 0), (NEWID(), @E1Q2, 'UseCors() then UseAuthorization()', 0),
+(NEWID(), @E1Q3, 'Structs', 0), (NEWID(), @E1Q3, 'Classes', 0), (@E1Q3_Correct, @E1Q3, 'Records', 1), (NEWID(), @E1Q3, 'Tuples', 0),
+(@E1Q4_Correct, @E1Q4, '")]', 1), (NEWID(), @E1Q4, '[ApiController]', 0), (NEWID(), @E1Q4, '[HttpGet]', 0), (NEWID(), @E1Q4, '', 0),
+(NEWID(), @E1Q5, 'Infrastructure', 0), (NEWID(), @E1Q5, 'API', 0), (@E1Q5_Correct, @E1Q5, 'Domain/Application', 1), (NEWID(), @E1Q5, 'Database', 0);
 
--- 8. Insert AnswerOptions for Question 2
-INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect)
-VALUES 
-(@Q2_OptionA, @Question2Id, 'Singleton', 0),
-(@Q2_OptionB, @Question2Id, 'Transient', 0),
-(@Q2_OptionC, @Question2Id, 'Scoped', 1),
-(@Q2_OptionD, @Question2Id, 'Static', 0);
+-- Insert Answer Options for Exam 2
+INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect) VALUES 
+(NEWID(), @E2Q1, 'Standalone Components', 1), (NEWID(), @E2Q1, 'Directives', 0), (NEWID(), @E2Q1, 'Pipes', 0), (NEWID(), @E2Q1, 'Services', 0),
+(NEWID(), @E2Q2, 'RxJS', 0), (NEWID(), @E2Q2, 'Promises', 0), (NEWID(), @E2Q2, 'Signals', 1), (NEWID(), @E2Q2, 'EventEmitters', 0),
+(NEWID(), @E2Q3, 'provideZonelessChangeDetection()', 1), (NEWID(), @E2Q3, 'removeZone()', 0), (NEWID(), @E2Q3, 'disableZoneJs()', 0), (NEWID(), @E2Q3, 'NgZone.disable()', 0),
+(NEWID(), @E2Q4, '@if', 1), (NEWID(), @E2Q4, '*ngIf', 0), (NEWID(), @E2Q4, 'ng-template', 0), (NEWID(), @E2Q4, 'ng-container', 0),
+(NEWID(), @E2Q5, 'effect()', 1), (NEWID(), @E2Q5, 'ngOnInit()', 0), (NEWID(), @E2Q5, 'ngOnChanges()', 0), (NEWID(), @E2Q5, 'subscribe()', 0);
 
--- 9. Insert ExamAttempt (Simulating a completed exam by the student)
+-- Insert Answer Options for Exam 3
+INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect) VALUES 
+(NEWID(), @E3Q1, 'AsNoTracking()', 1), (NEWID(), @E3Q1, 'NoCache()', 0), (NEWID(), @E3Q1, 'IgnoreQueryFilters()', 0), (NEWID(), @E3Q1, 'ToList()', 0),
+(NEWID(), @E3Q2, 'Global Query Filters', 1), (NEWID(), @E3Q2, 'Where() clause', 0), (NEWID(), @E3Q2, 'Stored Procedures', 0), (NEWID(), @E3Q2, 'Data Annotations', 0),
+(NEWID(), @E3Q3, 'Scaffold-DbContext', 1), (NEWID(), @E3Q3, 'Add-Migration', 0), (NEWID(), @E3Q3, 'Update-Database', 0), (NEWID(), @E3Q3, 'Generate-Models', 0),
+(NEWID(), @E3Q4, 'Tracking', 1), (NEWID(), @E3Q4, 'NoTracking', 0), (NEWID(), @E3Q4, 'Lazy Loading', 0), (NEWID(), @E3Q4, 'Disconnected', 0),
+(NEWID(), @E3Q5, 'ISaveChangesInterceptor', 1), (NEWID(), @E3Q5, 'IDbCommandInterceptor', 0), (NEWID(), @E3Q5, 'IQueryable', 0), (NEWID(), @E3Q5, 'IDbContextOptions', 0);
+
+-- Insert Answer Options for Exam 4
+INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect) VALUES 
+(NEWID(), @E4Q1, 'Clustered Index', 1), (NEWID(), @E4Q1, 'Non-Clustered Index', 0), (NEWID(), @E4Q1, 'Columnstore Index', 0), (NEWID(), @E4Q1, 'Hash Index', 0),
+(NEWID(), @E4Q2, 'Reduce Redundancy', 1), (NEWID(), @E4Q2, 'Increase Speed', 0), (NEWID(), @E4Q2, 'Encrypt Data', 0), (NEWID(), @E4Q2, 'Backup Database', 0),
+(NEWID(), @E4Q3, 'INNER JOIN', 1), (NEWID(), @E4Q3, 'LEFT JOIN', 0), (NEWID(), @E4Q3, 'RIGHT JOIN', 0), (NEWID(), @E4Q3, 'FULL OUTER JOIN', 0),
+(NEWID(), @E4Q4, 'SET SHOWPLAN_ALL ON', 1), (NEWID(), @E4Q4, 'EXPLAIN', 0), (NEWID(), @E4Q4, 'ANALYZE', 0), (NEWID(), @E4Q4, 'DBCC FREEPROCCACHE', 0),
+(NEWID(), @E4Q5, 'Foreign Key', 1), (NEWID(), @E4Q5, 'Primary Key', 0), (NEWID(), @E4Q5, 'Unique Key', 0), (NEWID(), @E4Q5, 'Check Constraint', 0);
+
+-- Insert Answer Options for Exam 5
+INSERT INTO AnswerOptions (Id, QuestionSetId, OptionText, IsCorrect) VALUES 
+(NEWID(), @E5Q1, 'Continuous Integration', 1), (NEWID(), @E5Q1, 'Code Injection', 0), (NEWID(), @E5Q1, 'Continuous Inspection', 0), (NEWID(), @E5Q1, 'Code Integration', 0),
+(NEWID(), @E5Q2, 'Dockerfile', 1), (NEWID(), @E5Q2, 'docker-compose.yml', 0), (NEWID(), @E5Q2, '.gitignore', 0), (NEWID(), @E5Q2, 'appsettings.json', 0),
+(NEWID(), @E5Q3, 'Two identical production environments', 1), (NEWID(), @E5Q3, 'A UI testing strategy', 0), (NEWID(), @E5Q3, 'A database backup method', 0), (NEWID(), @E5Q3, 'A Git branching model', 0),
+(NEWID(), @E5Q4, 'Events (like push or pull_request)', 1), (NEWID(), @E5Q4, 'Manual clicks only', 0), (NEWID(), @E5Q4, 'Database triggers', 0), (NEWID(), @E5Q4, 'Docker builds', 0),
+(NEWID(), @E5Q5, 'Azure Key Vault', 1), (NEWID(), @E5Q5, 'appsettings.json', 0), (NEWID(), @E5Q5, 'GitHub Repository', 0), (NEWID(), @E5Q5, 'Hardcoded in C#', 0);
+
+-- Insert ExamAttempt (Student 1 taking Exam 1)
 INSERT INTO ExamAttempts (Id, UserId, ExamSetId, StartTime, EndTime, TotalScore)
-VALUES 
-(@AttemptId, @StudentUserId, @ExamSetId, DATEADD(MINUTE, -45, GETUTCDATE()), GETUTCDATE(), 20.00);
+VALUES (@AttemptId, @Student1, @Exam1, DATEADD(MINUTE, -55, GETUTCDATE()), GETUTCDATE(), 50.00);
 
--- 10. Insert UserAnswers (Student got both questions right)
-INSERT INTO UserAnswers (Id, AttemptId, QuestionId, SelectedOptionId, IsCorrect)
-VALUES 
-(NEWID(), @AttemptId, @Question1Id, @Q1_OptionA, 1),
-(NEWID(), @AttemptId, @Question2Id, @Q2_OptionC, 1);
+-- Insert UserAnswers (Student 1 got 4 right, 1 wrong)
+INSERT INTO UserAnswers (Id, AttemptId, QuestionId, SelectedOptionId, IsCorrect) VALUES 
+(NEWID(), @AttemptId, @E1Q1, @E1Q1_Correct, 1),
+(NEWID(), @AttemptId, @E1Q2, @E1Q2_Correct, 1),
+(NEWID(), @AttemptId, @E1Q3, @E1Q3_Correct, 1),
+(NEWID(), @AttemptId, @E1Q4, @E1Q4_Correct, 1),
+(NEWID(), @AttemptId, @E1Q5, (SELECT TOP 1 Id FROM AnswerOptions WHERE QuestionSetId = @E1Q5 AND IsCorrect = 0), 0);
 
 GO

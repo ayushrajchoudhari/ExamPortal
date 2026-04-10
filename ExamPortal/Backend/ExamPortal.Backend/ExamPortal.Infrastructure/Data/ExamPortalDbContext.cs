@@ -1,40 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using ExamPortal.Application.Interfaces;
 using ExamPortal.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamPortal.Infrastructure.Data;
 
-public partial class ExamPortalDbContext : DbContext
+public partial class ExamPortalDbContext : DbContext, IExamPortalDbContext
 {
-    public ExamPortalDbContext()
-    {
-    }
-
     public ExamPortalDbContext(DbContextOptions<ExamPortalDbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<AnswerOption> AnswerOptions { get; set; }
-
-    public virtual DbSet<ExamAttempt> ExamAttempts { get; set; }
-
-    public virtual DbSet<ExamSet> ExamSets { get; set; }
-
-    public virtual DbSet<InstructionSet> InstructionSets { get; set; }
-
-    public virtual DbSet<QuestionSet> QuestionSets { get; set; }
-
-    public virtual DbSet<Tenant> Tenants { get; set; }
-
-    public virtual DbSet<User> Users { get; set; }
-
-    public virtual DbSet<UserAnswer> UserAnswers { get; set; }
+    public DbSet<ExamSet> ExamSets { get; set; }
+    public DbSet<QuestionSet> QuestionSets { get; set; }
+    public DbSet<AnswerOption> AnswerOptions { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<ExamAttempt> ExamAttempts { get; set; }
+    public DbSet<UserAnswer> UserAnswers { get; set; }
 
     // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        // => optionsBuilder.UseSqlServer("Data Source=LAPTOP-THEAYUSH\\SQLEXPRESS;Database=ExamPortalDb;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Command Timeout=0");
+    // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+    // => optionsBuilder.UseSqlServer("Data Source=LAPTOP-THEAYUSH\\SQLEXPRESS;Database=ExamPortalDb;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Command Timeout=0");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
