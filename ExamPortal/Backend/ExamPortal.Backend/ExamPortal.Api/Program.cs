@@ -1,4 +1,7 @@
 
+using ExamPortal.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ExamPortal.Api
 {
     public class Program
@@ -8,8 +11,12 @@ namespace ExamPortal.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
+
+            // Register ExamPortalDbContext with Dependency Injection
+            builder.Services.AddDbContext<ExamPortalDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
