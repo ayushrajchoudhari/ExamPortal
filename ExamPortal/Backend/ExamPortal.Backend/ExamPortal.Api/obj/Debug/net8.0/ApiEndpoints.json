@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.Admin.AdminExamsController",
+    "Method": "CreateExam",
+    "RelativePath": "api/admin/exams/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ExamPortal.Application.DTOs.Admin.CreateExamRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ExamPortal.Application.DTOs.User.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.ExamsController",
+    "Method": "GetAvailableExams",
+    "RelativePath": "api/exams/available",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

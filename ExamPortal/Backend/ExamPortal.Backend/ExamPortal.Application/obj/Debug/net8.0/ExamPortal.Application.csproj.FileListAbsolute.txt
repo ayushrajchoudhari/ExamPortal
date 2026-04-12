@@ -1,0 +1,16 @@
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\bin\Debug\net8.0\ExamPortal.Application.deps.json
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\bin\Debug\net8.0\ExamPortal.Application.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\bin\Debug\net8.0\ExamPortal.Application.pdb
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\bin\Debug\net8.0\ExamPortal.Domain.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\bin\Debug\net8.0\ExamPortal.Domain.pdb
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.csproj.AssemblyReference.cache
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.AssemblyInfoInputs.cache
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.AssemblyInfo.cs
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.csproj.CoreCompileInputs.cache
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.sourcelink.json
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPort.9713F807.Up2Date
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\refint\ExamPortal.Application.dll
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ExamPortal.Application.pdb
+D:\repos\ExamPortal\ExamPortal\Backend\ExamPortal.Backend\ExamPortal.Application\obj\Debug\net8.0\ref\ExamPortal.Application.dll
