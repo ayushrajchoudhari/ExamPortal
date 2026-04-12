@@ -1,3 +1,20 @@
+# Install Angular CLI
+
+This to setup angular in local environment ide.
+
+```bash
+npm install -g @angular/cli
+```
+
+# Install node package
+
+This is to host angular project in localhost.
+
+```bash
+npm install
+npm i
+```
+
 # ExamPortalUI
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
@@ -8,6 +25,8 @@ To start a local development server, run:
 
 ```bash
 ng serve
+ng serve --open
+ng s --o
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
@@ -18,6 +37,14 @@ Angular CLI includes powerful code scaffolding tools. To generate a new componen
 
 ```bash
 ng generate component component-name
+ng g c component-name
+```
+
+To generate a new component, run:
+
+```bash
+ng generate service service-name
+ng g s service-name
 ```
 
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:

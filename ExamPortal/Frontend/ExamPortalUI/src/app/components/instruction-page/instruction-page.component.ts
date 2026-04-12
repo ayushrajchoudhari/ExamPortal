@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-instruction-page',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './instruction-page.html',
-  styleUrls: ['./instruction-page.scss'],
+  templateUrl: './instruction-page.component.html',
+  styleUrls: ['./instruction-page.component.scss'],
 })
 export class InstructionPage {
   agreed: boolean = false;

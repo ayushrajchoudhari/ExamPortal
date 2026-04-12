@@ -1,0 +1,124 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-logo">
+        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+      </div>
+      <div class="ep-header-text">
+        <h1>Professional Certification Exam 2026</h1>
+        <p>Please read all instructions carefully before proceeding</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main">
+    <div class="ep-container instruction-wrapper">
+      <div class="ep-card">
+        
+        <div class="ep-card-header">
+          <h2>Examination Instructions</h2>
+          <p>Before you begin, please review the following guidelines and requirements.</p>
+        </div>
+
+        <div class="instructions-container">
+          
+          <section class="instruction-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 15.586L6.707 12.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 10-1.414-1.414L10 15.586z"></path>
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              </svg>
+              General Instructions
+            </h3>
+            <ul>
+              <li>This examination consists of 50 multiple-choice questions.</li>
+              <li>Each question has only one correct answer.</li>
+              <li>Read each question carefully before selecting your answer.</li>
+              <li>You can navigate between questions using the navigation panel.</li>
+              <li>You may flag questions for review and return to them later.</li>
+            </ul>
+          </section>
+
+          <section class="instruction-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Time Management
+            </h3>
+            <ul>
+              <li>Total time allowed: <strong>90 minutes</strong></li>
+              <li>A timer will be displayed at the top of the exam screen.</li>
+              <li>The exam will automatically submit when time expires.</li>
+              <li>You may submit your exam early if you finish before the time limit.</li>
+            </ul>
+          </section>
+
+          <section class="instruction-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Technical Requirements
+            </h3>
+            <ul>
+              <li>Ensure you have a stable internet connection throughout the exam.</li>
+              <li>Do not refresh or close your browser during the exam.</li>
+              <li>Use a desktop or laptop computer for the best experience.</li>
+              <li>Clear your browser cache if you experience any technical issues.</li>
+            </ul>
+          </section>
+
+          <div class="ep-alert" style="display: flex; gap: 16px; align-items: flex-start;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--color-primary); margin-top: 2px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>
+              <h4 class="ep-alert-title">Important Notes</h4>
+              <ul style="padding-left: 16px; margin: 0; font-size: 14px; color: var(--color-dark); line-height: 1.5; list-style-type: disc;">
+                <li>Once you start the exam, you cannot pause or restart it.</li>
+                <li>Any attempt to switch tabs or windows may be flagged as suspicious activity.</li>
+                <li>Make sure you are in a quiet environment free from distractions.</li>
+                <li>A passing score of 70% or higher is required to obtain certification.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="agreement-container">
+          <input type="checkbox" id="agree-terms" [(ngModel)]="agreed" />
+          <label for="agree-terms">
+            I have read and understood all the instructions. I agree to follow the examination rules and guidelines.
+            I understand that any violation may result in disqualification.
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
+          <button 
+            (click)="handleStartExam()" 
+            [disabled]="!agreed" 
+            class="ep-btn" 
+            [ngClass]="agreed? 'ep-btn-primary' : 'ep-btn-secondary'" 
+            style="min-width: 200px;">
+            Start Examination
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-sticky-button">
+        <button 
+          (click)="handleStartExam()" 
+          [disabled]="!agreed" 
+          class="ep-btn" 
+          [ngClass]="agreed? 'ep-btn-primary' : 'ep-btn-secondary'" 
+          style="width: 100%;">
+          Start Examination
+        </button>
+      </div>
+      
+    </div>
+  </main>
+</div>

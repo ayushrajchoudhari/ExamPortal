@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ExamPageComponent } from './exam-page.component';
+
+describe('ExamPageComponent', () => {
+  let component: ExamPageComponent;
+  let fixture: ComponentFixture<ExamPageComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ExamPageComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ExamPageComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

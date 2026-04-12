@@ -1,0 +1,89 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content" style="justify-content: space-between">
+      <div class="left-section" style="justify-content: flex-start">
+        <div class="ep-header-logo">
+          <img
+            src="/assets/favicon_io_dark/android-chrome-192x192.png"
+            alt="EP."
+            width="44"
+            height="44"
+          />
+        </div>
+        <div class="ep-header-text">
+          <h1>C# and.NET 8 Advanced Architecture</h1>
+          <p>Question {{ state.currentQuestionIndex() + 1 }} of {{ questions().length }}</p>
+        </div>
+      </div>
+      <div class="right-section" style="justify-content: flex-end">
+        <div class="timer-box" [class.danger]="state.timeRemaining() < 300">
+          Time Remaining: {{ state.formattedTime() }}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main">
+    <div class="ep-container exam-layout">
+      <div class="ep-card question-area">
+        <div class="ep-card-header">
+          <h2>{{ currentQuestion().text }}</h2>
+          <p>Points: {{ currentQuestion().points }}</p>
+        </div>
+
+        <div class="options-list">
+          @for (option of currentQuestion().options; track option.id) {
+            <label
+              class="option-item"
+              [class.selected]="state.userAnswers()[currentQuestion().id] === option.id"
+            >
+              <input
+                type="radio"
+                [name]="currentQuestion().id"
+                [value]="option.id"
+                [checked]="state.userAnswers()[currentQuestion().id] === option.id"
+                (change)="selectOption(option.id)"
+              />
+              {{ option.text }}
+            </label>
+          }
+        </div>
+
+        <div style="margin-top: 32px; display: flex; justify-content: space-between">
+          <button class="ep-btn ep-btn-secondary" [disabled]="isFirst()" (click)="prev()">
+            Previous
+          </button>
+          <button class="ep-btn ep-btn-primary" [disabled]="isLast()" (click)="next()">Next</button>
+        </div>
+      </div>
+
+      <div class="ep-card navigation-sidebar">
+        <div class="ep-card-header">
+          <h2>Exam Navigator</h2>
+          <p>Jump to any question.</p>
+        </div>
+
+        <div class="nav-grid">
+          @for (q of questions(); track q.id; let i = $index) {
+            <button
+              class="nav-bubble"
+              [class.answered]="state.userAnswers()[q.id]"
+              [class.active]="state.currentQuestionIndex() === i"
+              (click)="goTo(i)"
+            >
+              {{ i + 1 }}
+            </button>
+          }
+        </div>
+
+        <button
+          class="ep-btn ep-btn-primary"
+          style="width: 100%; margin-top: 32px"
+          (click)="submitExam()"
+        >
+          Submit Exam
+        </button>
+      </div>
+    </div>
+  </main>
+</div>

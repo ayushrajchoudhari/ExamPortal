@@ -1,0 +1,66 @@
+<div class="ep-page-container">
+  
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-logo">
+        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+      </div>
+      <div class="ep-header-text">
+        <h1>Available Examinations</h1>
+        <p>Select an exam module below to view its instructions and begin your test.</p>
+      </div>
+
+      <div style="margin-left: auto;">
+        @if (authService.isAuthenticated()) {
+          <button class="ep-btn ep-btn-secondary" (click)="logout()">
+            Logout
+          </button>
+        } @else {
+          <button class="ep-btn ep-btn-primary" (click)="navigateToLogin()">
+            Login / Sign Up
+          </button>
+        }
+      </div>
+
+    </div>
+  </header>
+
+  <main class="ep-main" style="align-items: flex-start;">
+    <div class="ep-container">
+
+      @if (isLoading()) {
+        <div class="ep-card" style="text-align: center;">
+          <p>Loading available exams...</p>
+        </div>
+      } @else if (errorMessage()) {
+        <div class="ep-alert">
+          <h4 class="ep-alert-title">Connection Error</h4>
+          <p class="ep-alert-text">{{ errorMessage() }}</p>
+        </div>
+      } @else if (exams().length === 0) {
+        <div class="ep-card" style="text-align: center;">
+          <p>There are no active exams available at this time.</p>
+        </div>
+      } @else {
+        <div class="home-exam-grid">
+          @for (exam of exams(); track exam.id) {
+            <div class="ep-card">
+              <div class="ep-card-header">
+                <h2>{{ exam.title }}</h2>
+                <p>Time Limit: <strong>{{ exam.durationMinutes }} minutes</strong></p>
+                <p>Passing Requirement: <strong>{{ exam.passingScore }}%</strong></p>
+              </div>
+              
+              <div class="home-card-actions">
+                <button class="ep-btn ep-btn-primary" (click)="viewInstructions(exam.id)">
+                  View Instructions
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+    </div>
+  </main>
+</div>

@@ -1,0 +1,13 @@
+/* Responsive Grid for Multiple Exams on Home Page */
+.home-exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Specific button positioning for the home cards */
+.home-card-actions {
+  display: flex;
+  margin-top: 16px;
+  justify-content: flex-start;
+}

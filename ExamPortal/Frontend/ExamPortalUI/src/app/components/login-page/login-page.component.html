@@ -1,0 +1,78 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-logo">
+        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+      </div>
+      <div class="ep-header-text">
+        <h1>Professional Certification</h1>
+        <p>Examination Portal Authentication</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main">
+    <div class="ep-container" style="max-width: 500px;">
+      <div class="ep-card">
+        
+        <div class="ep-card-header" style="text-align: center;">
+          <h2>{{ isLoginMode()? 'Welcome Back' : 'Create an Account' }}</h2>
+          <p>{{ isLoginMode()? 'Please log in to access your examinations.' : 'Sign up to start taking certification exams.' }}</p>
+        </div>
+
+        @if (errorMessage()) {
+          <div class="ep-alert" style="margin-bottom: 16px;">
+            <h4 class="ep-alert-title">Authentication Error</h4>
+            <p class="ep-alert-text" style="font-size: 14px;">{{ errorMessage() }}</p>
+          </div>
+        }
+
+        <form (ngSubmit)="onSubmit()">
+          
+          @if (!isLoginMode()) {
+            <div class="ep-form-group-row">
+              <div class="ep-form-group">
+                <label>First Name</label>
+                <input type="text" name="firstName" [(ngModel)]="formData().firstName" required class="ep-input" />
+              </div>
+              <div class="ep-form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastName" [(ngModel)]="formData().lastName" required class="ep-input" />
+              </div>
+            </div>
+          }
+
+          <div class="ep-form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" [(ngModel)]="formData().email" required class="ep-input" />
+          </div>
+          
+          <div class="ep-form-group">
+            <label>Password</label>
+            <input type="password" name="password" [(ngModel)]="formData().password" required class="ep-input" />
+          </div>
+
+          @if (!isLoginMode()) {
+            <div class="ep-form-group">
+              <label>Confirm Password</label>
+              <input type="password" name="confirmPassword" [(ngModel)]="formData().confirmPassword" required class="ep-input" />
+            </div>
+          }
+
+          <div style="margin-top: 24px; display: flex; justify-content: center;">
+            <button type="submit" class="ep-btn ep-btn-primary" style="width: 100%;" [disabled]="isLoading()">
+              {{ isLoading()? 'Processing...' : (isLoginMode()? 'Login' : 'Sign Up') }}
+            </button>
+          </div>
+
+          <div style="text-align: center; margin-top: 16px;">
+            <a href="javascript:void(0)" (click)="toggleMode()" class="toggle-link">
+              {{ isLoginMode()? 'Need an account? Sign up here.' : 'Already have an account? Log in.' }}
+            </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
