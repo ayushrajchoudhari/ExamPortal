@@ -2,7 +2,7 @@
   {
     "ContainingType": "ExamPortal.Api.Controllers.Admin.AdminExamsController",
     "Method": "CreateExam",
-    "RelativePath": "api/admin/exams",
+    "RelativePath": "api/admin/exams/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
