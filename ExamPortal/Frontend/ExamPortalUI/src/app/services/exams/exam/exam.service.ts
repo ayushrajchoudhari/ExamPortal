@@ -16,7 +16,7 @@ export class ExamService {
   private http = inject(HttpClient);
   
   // Ensure this port matches your.NET API launchSettings.json
-  private readonly apiUrl = 'https://localhost:7278/api/exams';
+  private readonly apiUrl = 'https://localhost:7178/api/exams';
 
   public getAvailableExams(): Observable<ExamSetSummaryDto[]> {
     return this.http.get<ExamSetSummaryDto[]>(`${this.apiUrl}/available`);

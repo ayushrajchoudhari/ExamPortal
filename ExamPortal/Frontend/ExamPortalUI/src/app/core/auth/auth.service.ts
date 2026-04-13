@@ -19,7 +19,7 @@ export interface AuthResponseDto {
 export class AuthService {
   private http = inject(HttpClient);
   // Ensure this port matches your.NET Backend (check launchSettings.json)
-  private readonly apiUrl = 'https://localhost:7278/api/auth'; 
+  private readonly apiUrl = 'https://localhost:7178/api/auth'; 
 
   // Writable Signal initialized from localStorage
   private readonly authState = signal<AuthResponseDto | null>(this.loadState());
