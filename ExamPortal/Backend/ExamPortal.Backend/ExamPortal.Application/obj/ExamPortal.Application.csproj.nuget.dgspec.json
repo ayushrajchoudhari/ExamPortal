@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {}
+    "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {}
   },
   "projects": {
-    "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {
+    "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj",
+        "projectUniqueName": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj",
         "projectName": "ExamPortal.Application",
-        "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj",
+        "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj",
         "packagesPath": "C:\\Users\\AYUSH\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\obj\\",
+        "outputPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
-                "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj"
+              "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
+                "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj"
               }
             }
           }
@@ -91,14 +91,14 @@
         }
       }
     },
-    "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
+    "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj",
+        "projectUniqueName": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj",
         "projectName": "ExamPortal.Domain",
-        "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj",
+        "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj",
         "packagesPath": "C:\\Users\\AYUSH\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\obj\\",
+        "outputPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

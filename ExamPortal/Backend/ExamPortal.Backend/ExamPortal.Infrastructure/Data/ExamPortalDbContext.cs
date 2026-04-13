@@ -12,6 +12,7 @@ public partial class ExamPortalDbContext : DbContext, IExamPortalDbContext
     }
 
     public DbSet<ExamSet> ExamSets { get; set; }
+    public DbSet<InstructionSet> InstructionSets { get; set; }
     public DbSet<QuestionSet> QuestionSets { get; set; }
     public DbSet<AnswerOption> AnswerOptions { get; set; }
     public DbSet<User> Users { get; set; }

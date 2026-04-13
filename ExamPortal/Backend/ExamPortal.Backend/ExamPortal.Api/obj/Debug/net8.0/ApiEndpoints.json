@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "ExamPortal.Api.Controllers.AttemptsController",
+    "Method": "GetQuestions",
+    "RelativePath": "{attemptId}/questions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "attemptId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.AttemptsController",
+    "Method": "SubmitExam",
+    "RelativePath": "{attemptId}/submit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "attemptId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ExamPortal.Application.DTOs.User.SubmitExamRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ExamPortal.Api.Controllers.Admin.AdminExamsController",
     "Method": "CreateExam",
     "RelativePath": "api/admin/exams/create",
@@ -33,12 +70,44 @@
   },
   {
     "ContainingType": "ExamPortal.Api.Controllers.ExamsController",
+    "Method": "GetInstructions",
+    "RelativePath": "api/exams/{id}/instructions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.ExamsController",
     "Method": "GetAvailableExams",
     "RelativePath": "api/exams/available",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExamPortal.Api.Controllers.AttemptsController",
+    "Method": "StartAttempt",
+    "RelativePath": "start",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ExamPortal.Application.DTOs.User.StartAttemptRequestDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

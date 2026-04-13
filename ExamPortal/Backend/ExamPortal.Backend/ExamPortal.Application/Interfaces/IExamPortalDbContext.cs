@@ -6,6 +6,7 @@ namespace ExamPortal.Application.Interfaces;
 public interface IExamPortalDbContext
 {
     DbSet<ExamSet> ExamSets { get; }
+    DbSet<InstructionSet> InstructionSets { get; }
     DbSet<QuestionSet> QuestionSets { get; }
     DbSet<AnswerOption> AnswerOptions { get; }
     DbSet<User> Users { get; }

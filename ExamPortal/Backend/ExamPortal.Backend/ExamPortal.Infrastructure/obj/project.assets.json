@@ -2518,11 +2518,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj",
+      "projectUniqueName": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj",
       "projectName": "ExamPortal.Infrastructure",
-      "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj",
+      "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\AYUSH\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\obj\\",
+      "outputPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2543,11 +2543,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {
-              "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj"
+            "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj": {
+              "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\ExamPortal.Application.csproj"
             },
-            "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
-              "projectPath": "D:\\repos\\ExamPortal\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj"
+            "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj": {
+              "projectPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\ExamPortal.Domain.csproj"
             }
           }
         }

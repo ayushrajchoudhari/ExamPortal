@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using ExamPortal.Application.Interfaces;
 using ExamPortal.Infrastructure.Data;
 using MediatR;
@@ -14,8 +15,6 @@ namespace ExamPortal.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            
 
             // Scans the Application assembly to register all CQRS Handlers
             builder.Services.AddMediatR(cfg =>
@@ -51,11 +50,45 @@ namespace ExamPortal.Api
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Enter YOUR_TOKEN_HERE (without the 'Bearer ' prefix).",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+            });
 
             // Add services to the container.
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
+
+            // CORS configuration to allow requests from Angular frontend
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular", policyBuilder =>
+                    policyBuilder.WithOrigins("http://localhost:4200")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+            });
 
             var app = builder.Build();
 
@@ -67,6 +100,9 @@ namespace ExamPortal.Api
             }
 
             app.UseHttpsRedirection();
+
+            // for CORS to allow Angular frontend to access the API
+            app.UseCors("AllowAngular");
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -17,6 +17,7 @@ public class ExamsController : ControllerBase
         _mediator = mediator;
     }
 
+    #region - Get Available Exams
     [HttpGet("available")]
     public async Task<IActionResult> GetAvailableExams()
     {
@@ -29,4 +30,21 @@ public class ExamsController : ControllerBase
 
         return Ok(exams);
     }
+    #endregion
+
+    #region - Get Exam Instructions
+    [HttpGet("{id:guid}/instructions")]
+    public async Task<IActionResult> GetInstructions(Guid id)
+    {
+        try
+        {
+            var instructions = await _mediator.Send(new GetExamInstructionsQuery(id));
+            return Ok(instructions);
+        }
+        catch (Exception ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+    #endregion
 }
