@@ -1,11 +1,11 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using ExamPortal.Application.DTOs.User;
 using ExamPortal.Application.Interfaces;
-using ExamPortal.Application.DTOs.User;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamPortal.Application.Features.Exams.Queries;
 
-public record GetExamInstructionsQuery(Guid ExamId) : IRequest<InstructionDto>;
+public record GetExamInstructionsQuery(Guid ExamSetId) : IRequest<InstructionDto>;
 
 public class GetExamInstructionsQueryHandler : IRequestHandler<GetExamInstructionsQuery, InstructionDto>
 {
@@ -18,13 +18,12 @@ public class GetExamInstructionsQueryHandler : IRequestHandler<GetExamInstructio
 
     public async Task<InstructionDto> Handle(GetExamInstructionsQuery request, CancellationToken cancellationToken)
     {
-        var instruction = await _context.ExamSets
+        var instruction = await _context.InstructionSets
            .AsNoTracking()
-           .Where(e => e.Id == request.ExamId)
-           .Select(e => e.InstructionSet)
-           .FirstOrDefaultAsync(cancellationToken);
+           .FirstOrDefaultAsync(i => i.ExamSetId == request.ExamSetId, cancellationToken);
 
-        if (instruction == null) throw new Exception("Instructions not found.");
+        if (instruction == null)
+            throw new Exception("Instructions not found for this exam.");
 
         return new InstructionDto(instruction.Id, instruction.Content, instruction.AgreementRequired);
     }

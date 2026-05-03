@@ -36,7 +36,7 @@
         }
       }
     },
-    "/start": {
+    "/api/attempts/start": {
       "post": {
         "tags": [
           "Attempts"
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/{attemptId}/questions": {
+    "/api/attempts/{attemptId}/questions": {
       "get": {
         "tags": [
           "Attempts"
@@ -90,7 +90,7 @@
         }
       }
     },
-    "/{attemptId}/submit": {
+    "/api/attempts/{attemptId}/submit": {
       "post": {
         "tags": [
           "Attempts"
@@ -125,6 +125,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/attempts/{attemptId}/result": {
+      "get": {
+        "tags": [
+          "Attempts"
+        ],
+        "parameters": [
+          {
+            "name": "attemptId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

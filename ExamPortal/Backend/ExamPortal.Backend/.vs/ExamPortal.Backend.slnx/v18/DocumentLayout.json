@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\dtos\\admin\\createexamrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\dtos\\admin\\createexamrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\attempts\\queries\\getexamresultquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\queries\\getexamresultquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{008AC733-01F9-4D8E-B0E6-BE2A9B37F858}|ExamPortal.Domain\\ExamPortal.Domain.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.domain\\entities\\examattempt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{008AC733-01F9-4D8E-B0E6-BE2A9B37F858}|ExamPortal.Domain\\ExamPortal.Domain.csproj|solutionrelative:examportal.domain\\entities\\examattempt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECA31A23-4810-27B2-4B8C-B546A9C53AFA}|ExamPortal.Api\\ExamPortal.Api.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.api\\controllers\\attemptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECA31A23-4810-27B2-4B8C-B546A9C53AFA}|ExamPortal.Api\\ExamPortal.Api.csproj|solutionrelative:examportal.api\\controllers\\attemptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\attempts\\commands\\submitexamcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\commands\\submitexamcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\attempts\\queries\\getactiveexamquestionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\queries\\getactiveexamquestionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\dtos\\user\\examattemptdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\dtos\\user\\examattemptdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6754F466-EF37-4349-842C-443766EE6120}|ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.infrastructure\\data\\examportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6754F466-EF37-4349-842C-443766EE6120}|ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj|solutionrelative:examportal.infrastructure\\data\\examportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\interfaces\\iexamportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\interfaces\\iexamportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECA31A23-4810-27B2-4B8C-B546A9C53AFA}|ExamPortal.Api\\ExamPortal.Api.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.api\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,8 +23,36 @@
       "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\commands\\startexamattemptcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\dtos\\user\\examattemptdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\dtos\\user\\examattemptdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\exams\\queries\\getexaminstructionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\exams\\queries\\getexaminstructionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\dtos\\user\\examsetsummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\dtos\\user\\examsetsummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6754F466-EF37-4349-842C-443766EE6120}|ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.infrastructure\\data\\examportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6754F466-EF37-4349-842C-443766EE6120}|ExamPortal.Infrastructure\\ExamPortal.Infrastructure.csproj|solutionrelative:examportal.infrastructure\\data\\examportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\interfaces\\iexamportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\interfaces\\iexamportaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\attempts\\queries\\getactiveexamquestionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\queries\\getactiveexamquestionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\dtos\\admin\\createexamrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\dtos\\admin\\createexamrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.application\\features\\attempts\\commands\\submitexamcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9348E221-567F-4035-A9C1-D61FBD54E289}|ExamPortal.Application\\ExamPortal.Application.csproj|solutionrelative:examportal.application\\features\\attempts\\commands\\submitexamcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECA31A23-4810-27B2-4B8C-B546A9C53AFA}|ExamPortal.Api\\ExamPortal.Api.csproj|d:\\repos\\api\\examportal\\backend\\examportal.backend\\examportal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,24 +74,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateExamRequestDto.cs",
-              "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
-              "RelativeDocumentMoniker": "ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
-              "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
-              "RelativeToolTip": "ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T12:07:43.666Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -87,7 +86,57 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "ExamAttempt.cs",
+              "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\Entities\\ExamAttempt.cs",
+              "RelativeDocumentMoniker": "ExamPortal.Domain\\Entities\\ExamAttempt.cs",
+              "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Domain\\Entities\\ExamAttempt.cs",
+              "RelativeToolTip": "ExamPortal.Domain\\Entities\\ExamAttempt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T10:14:33.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ExamSetSummaryDto.cs",
+              "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\User\\ExamSetSummaryDto.cs",
+              "RelativeDocumentMoniker": "ExamPortal.Application\\DTOs\\User\\ExamSetSummaryDto.cs",
+              "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\User\\ExamSetSummaryDto.cs",
+              "RelativeToolTip": "ExamPortal.Application\\DTOs\\User\\ExamSetSummaryDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T13:57:58.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetExamResultQuery.cs",
+              "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Queries\\GetExamResultQuery.cs",
+              "RelativeDocumentMoniker": "ExamPortal.Application\\Features\\Attempts\\Queries\\GetExamResultQuery.cs",
+              "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Queries\\GetExamResultQuery.cs",
+              "RelativeToolTip": "ExamPortal.Application\\Features\\Attempts\\Queries\\GetExamResultQuery.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA8wCMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T13:47:24.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateExamRequestDto.cs",
+              "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
+              "RelativeDocumentMoniker": "ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
+              "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
+              "RelativeToolTip": "ExamPortal.Application\\DTOs\\Admin\\CreateExamRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:07:43.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "SubmitExamCommand.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Commands\\SubmitExamCommand.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\Features\\Attempts\\Commands\\SubmitExamCommand.cs",
@@ -95,12 +144,11 @@
               "RelativeToolTip": "ExamPortal.Application\\Features\\Attempts\\Commands\\SubmitExamCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:50:01.467Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:50:01.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "GetActiveExamQuestionsQuery.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Queries\\GetActiveExamQuestionsQuery.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\Features\\Attempts\\Queries\\GetActiveExamQuestionsQuery.cs",
@@ -108,12 +156,11 @@
               "RelativeToolTip": "ExamPortal.Application\\Features\\Attempts\\Queries\\GetActiveExamQuestionsQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:47:24.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:47:24.673Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ExamPortalDbContext.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Infrastructure\\Data\\ExamPortalDbContext.cs",
               "RelativeDocumentMoniker": "ExamPortal.Infrastructure\\Data\\ExamPortalDbContext.cs",
@@ -121,12 +168,11 @@
               "RelativeToolTip": "ExamPortal.Infrastructure\\Data\\ExamPortalDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:27:28.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:27:28.807Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "IExamPortalDbContext.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Interfaces\\IExamPortalDbContext.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\Interfaces\\IExamPortalDbContext.cs",
@@ -134,77 +180,72 @@
               "RelativeToolTip": "ExamPortal.Application\\Interfaces\\IExamPortalDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:25:35.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:25:35.108Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AttemptsController.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Controllers\\AttemptsController.cs",
               "RelativeDocumentMoniker": "ExamPortal.Api\\Controllers\\AttemptsController.cs",
               "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Controllers\\AttemptsController.cs",
               "RelativeToolTip": "ExamPortal.Api\\Controllers\\AttemptsController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAADwvzIAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwEoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T11:11:33.62Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "ExamsController.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Controllers\\ExamsController.cs",
               "RelativeDocumentMoniker": "ExamPortal.Api\\Controllers\\ExamsController.cs",
               "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Controllers\\ExamsController.cs",
               "RelativeToolTip": "ExamPortal.Api\\Controllers\\ExamsController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwBMAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwC8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:09:11.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:09:11.07Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "StartExamAttemptCommand.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Commands\\StartExamAttemptCommand.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\Features\\Attempts\\Commands\\StartExamAttemptCommand.cs",
               "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Attempts\\Commands\\StartExamAttemptCommand.cs",
               "RelativeToolTip": "ExamPortal.Application\\Features\\Attempts\\Commands\\StartExamAttemptCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:08:28.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:08:28.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "GetExamInstructionsQuery.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Exams\\Queries\\GetExamInstructionsQuery.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\Features\\Exams\\Queries\\GetExamInstructionsQuery.cs",
               "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\Features\\Exams\\Queries\\GetExamInstructionsQuery.cs",
               "RelativeToolTip": "ExamPortal.Application\\Features\\Exams\\Queries\\GetExamInstructionsQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:06:24.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:06:24.026Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ExamAttemptDtos.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\User\\ExamAttemptDtos.cs",
               "RelativeDocumentMoniker": "ExamPortal.Application\\DTOs\\User\\ExamAttemptDtos.cs",
               "ToolTip": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Application\\DTOs\\User\\ExamAttemptDtos.cs",
               "RelativeToolTip": "ExamPortal.Application\\DTOs\\User\\ExamAttemptDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:05:26.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T11:05:26.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "ExamPortal.Api\\Properties\\launchSettings.json",
@@ -212,12 +253,11 @@
               "RelativeToolTip": "ExamPortal.Api\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-13T10:34:10.45Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T10:34:10.45Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\appsettings.json",
               "RelativeDocumentMoniker": "ExamPortal.Api\\appsettings.json",
@@ -225,12 +265,11 @@
               "RelativeToolTip": "ExamPortal.Api\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-13T10:34:02.909Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T10:34:02.909Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\repos\\API\\ExamPortal\\Backend\\ExamPortal.Backend\\ExamPortal.Api\\Program.cs",
               "RelativeDocumentMoniker": "ExamPortal.Api\\Program.cs",
@@ -238,8 +277,7 @@
               "RelativeToolTip": "ExamPortal.Api\\Program.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAuwE0AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T10:31:01.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T10:31:01.761Z"
             }
           ]
         }

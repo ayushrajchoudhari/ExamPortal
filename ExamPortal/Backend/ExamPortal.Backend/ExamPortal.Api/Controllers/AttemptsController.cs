@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace ExamPortal.Api.Controllers;
 
 [ApiController]
-
+[Route("api/attempts")]
 [Authorize]
 public class AttemptsController : ControllerBase
 {
@@ -63,6 +63,23 @@ public class AttemptsController : ControllerBase
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _mediator.Send(new SubmitExamCommand(attemptId, Guid.Parse(userId!), request));
+            return Ok(result);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+    #endregion
+
+    #region - Get Result
+    [HttpGet("{attemptId:guid}/result")]
+    public async Task<IActionResult> GetResult(Guid attemptId)
+    {
+        try
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _mediator.Send(new GetExamResultQuery(attemptId, Guid.Parse(userId!)));
             return Ok(result);
         }
         catch (InvalidOperationException ex)

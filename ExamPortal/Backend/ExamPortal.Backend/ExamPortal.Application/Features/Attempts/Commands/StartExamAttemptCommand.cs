@@ -1,11 +1,10 @@
-﻿using MediatR;
-using ExamPortal.Domain.Entities;
+﻿using ExamPortal.Application.DTOs.User;
 using ExamPortal.Application.Interfaces;
-using ExamPortal.Application.DTOs.User;
+using ExamPortal.Domain.Entities;
+using MediatR;
 
 namespace ExamPortal.Application.Features.Attempts.Commands;
 
-// We require both the Exam ID and the User ID to create an attempt
 public record StartExamAttemptCommand(Guid ExamSetId, Guid UserId) : IRequest<StartAttemptResponseDto>;
 
 public class StartExamAttemptCommandHandler : IRequestHandler<StartExamAttemptCommand, StartAttemptResponseDto>
@@ -22,9 +21,9 @@ public class StartExamAttemptCommandHandler : IRequestHandler<StartExamAttemptCo
         var attempt = new ExamAttempt
         {
             Id = Guid.NewGuid(),
-            ExamSetId = request.ExamSetId,
             UserId = request.UserId,
-            StartTime = DateTime.UtcNow // Locks in the server time to prevent client-side manipulation
+            ExamSetId = request.ExamSetId,
+            StartTime = DateTime.UtcNow // Use server UTC time to prevent client manipulation
         };
 
         _context.ExamAttempts.Add(attempt);
