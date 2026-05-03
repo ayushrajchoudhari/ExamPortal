@@ -20,7 +20,7 @@
   grid-template-columns: 1fr 320px;
   gap: 24px;
   align-items: start;
-
+  
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
@@ -36,8 +36,8 @@
   border-radius: 8px;
   border: 1px solid var(--color-gray-light, #e2e8f0);
   transition: all 0.3s ease;
-
-  /* Triggers when time is under 5 minutes */
+  
+  /* Triggers when time is under 5 minutes (300s) */
   &.danger {
     color: var(--color-primary, #a3144e);
     background-color: #fef3f4;
@@ -47,11 +47,11 @@
 }
 
 @keyframes pulse {
-  from {
-    opacity: 1;
+  from { 
+    opacity: 1; 
   }
-  to {
-    opacity: 0.8;
+  to { 
+    opacity: 0.8; 
   }
 }
 
@@ -74,19 +74,19 @@
   transition: all 0.2s ease;
   font-size: 16px;
   color: var(--color-dark, #2d3748);
-
+  
   &:hover {
     border-color: var(--color-primary, #a3144e);
     background-color: var(--color-light, #f7fafc);
   }
-
+  
   &.selected {
     border-color: var(--color-primary, #a3144e);
     background-color: #fef3f4;
     font-weight: 500;
   }
-
-  input[type='radio'] {
+  
+  input[type="radio"] {
     accent-color: var(--color-primary, #a3144e);
     width: 20px;
     height: 20px;
@@ -115,18 +115,16 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-
+  
   &:hover {
     border-color: var(--color-primary, #a3144e);
   }
-
-  /* Visual state for a completed question */
+  
   &.answered {
     background-color: var(--color-gray-light, #e2e8f0);
     border-color: var(--color-gray, #718096);
   }
-
-  /* Visual state for the currently active question */
+  
   &.active {
     background-color: var(--color-primary, #a3144e);
     color: var(--color-white, #ffffff);

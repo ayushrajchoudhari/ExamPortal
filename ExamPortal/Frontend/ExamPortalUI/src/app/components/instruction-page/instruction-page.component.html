@@ -99,9 +99,9 @@
         <div style="display: flex; justify-content: flex-end;">
           <button 
             (click)="handleStartExam()" 
-            [disabled]="!agreed" 
+            [disabled]="!agreed()" 
             class="ep-btn" 
-            [ngClass]="agreed? 'ep-btn-primary' : 'ep-btn-secondary'" 
+            [ngClass]="agreed()? 'ep-btn-primary' : 'ep-btn-secondary'" 
             style="min-width: 200px;">
             Start Examination
           </button>
@@ -111,9 +111,9 @@
       <div class="mobile-sticky-button">
         <button 
           (click)="handleStartExam()" 
-          [disabled]="!agreed" 
+          [disabled]="!agreed()" 
           class="ep-btn" 
-          [ngClass]="agreed? 'ep-btn-primary' : 'ep-btn-secondary'" 
+          [ngClass]="agreed()? 'ep-btn-primary' : 'ep-btn-secondary'" 
           style="width: 100%;">
           Start Examination
         </button>

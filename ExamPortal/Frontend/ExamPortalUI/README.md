@@ -47,6 +47,13 @@ ng generate service service-name
 ng g s service-name
 ```
 
+To generate a new interface, run:
+
+```bash
+ng g i interface-name
+ng g i path/interface-name
+```
+
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash

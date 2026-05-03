@@ -1,0 +1,91 @@
+.score-card {
+  align-items: center;
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+
+  /* Dynamic Success State */
+  &.passed {
+   .score-circle {
+      border-color: #38a169;
+      color: #2f855a;
+      background-color: #f0fff4;
+    }
+   .status-text { color: #2f855a; }
+  }
+
+  /* Dynamic Failure State */
+  &.failed {
+   .score-circle {
+      border-color: #e53e3e;
+      color: #c53030;
+      background-color: #fff5f5;
+    }
+   .status-text { color: #c53030; }
+  }
+}
+
+.score-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 8px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+
+ .score-value {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+ .score-label {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+}
+
+.status-text {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.metrics-grid {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 24px;
+
+ .metric-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-light);
+    padding: 16px;
+    border-radius: 8px;
+
+   .metric-label {
+      font-size: 14px;
+      color: var(--color-gray);
+      margin-bottom: 4px;
+    }
+
+   .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+  }
+}

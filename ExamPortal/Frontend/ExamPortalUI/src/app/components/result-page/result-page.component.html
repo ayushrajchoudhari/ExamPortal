@@ -1,0 +1,65 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-logo">
+        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+      </div>
+      <div class="ep-header-text">
+        <h1>Examination Results</h1>
+        <p>Review your final performance metrics</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main">
+    <div class="ep-container" style="max-width: 600px;">
+      
+      @if (isLoading()) {
+        <div class="ep-card" style="text-align: center;">
+          <p>Calculating your final score...</p>
+        </div>
+      } @else if (errorMessage()) {
+        <div class="ep-alert">
+          <h4 class="ep-alert-title">Error Retrieving Results</h4>
+          <p class="ep-alert-text">{{ errorMessage() }}</p>
+          <div style="margin-top: 16px; text-align: center;">
+             <button class="ep-btn ep-btn-secondary" (click)="goHome()">Return to Dashboard</button>
+          </div>
+        </div>
+      } @else if (result()) {
+        <div class="ep-card score-card">
+          
+          <div class="ep-card-header" style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-size: 24px;">{{ result()?.examTitle }}</h2>
+            <p>Submitted on {{ result()?.endTime | date:'medium' }}</p>
+          </div>
+
+          <div class="score-display" [class.passed]="result()?.passed" [class.failed]="!result()?.passed">
+            <div class="score-circle">
+              <span class="score-value">{{ result()?.totalScore | number:'1.0-2' }}</span>
+              <span class="score-label">Points</span>
+            </div>
+            <h3 class="status-text">
+              {{ result()?.passed? 'Congratulations, you passed!' : 'Unfortunately, you did not pass.' }}
+            </h3>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <span class="metric-label">Passing Requirement</span>
+              <span class="metric-value">{{ result()?.passingScore }} Points</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px; display: flex; justify-content: center;">
+            <button class="ep-btn ep-btn-primary" (click)="goHome()" style="width: 100%;">
+              Return to Dashboard
+            </button>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  </main>
+</div>

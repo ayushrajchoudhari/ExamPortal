@@ -1,6 +1,10 @@
 import { Component, OnInit, OnDestroy, signal, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExamStateService } from '../../services/exams/state/exam-state.service';
+import { AttemptService } from '../../services/attempt/attempt.service';
+import { ActiveQuestionDto } from '../../interfaces/active-question-dto';
+import { SubmitExamRequestDto } from '../../interfaces/submit-exam-request-dto';
+import { SubmitExamResponseDto } from '../../interfaces/submit-exam-response-dto';
 
 @Component({
   selector: 'app-exam-page',
@@ -10,32 +14,51 @@ import { ExamStateService } from '../../services/exams/state/exam-state.service'
 })
 export class ExamPageComponent implements OnInit, OnDestroy {
   public state = inject(ExamStateService);
+  private attemptService = inject(AttemptService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  
   private timerInterval: any;
+  private currentAttemptId: string = '';
 
-  // Temporary Mock Data for UI Testing
-  public questions = signal<any>([
-    { id: 'q1', text: 'What is the default DI lifetime for services in Angular?', points: 10, options: [{id: 'o1', text: 'Singleton'}, {id: 'o2', text: 'Transient'}, {id: 'o3', text: 'Scoped'}] },
-    { id: 'q2', text: 'What is the recommended DI lifetime for DbContext?', points: 10, options: []},
-    { id: 'q3', text: 'Which Angular API handles synchronous state reactivity?', points: 10, options: []},
-    { id: 'q4', text: 'Which index determines the physical sorting of a table?', points: 10, options: [{id: 'o10', text: 'Clustered Index'}, {id: 'o11', text: 'Non-Clustered Index'}, {id: 'o12', text: 'Hash Index'}] },
-    { id: 'q5', text: 'How do you remove Zone.js in Angular 20?', points: 10, options: []}
-  ]);
+  // 1. Replaced mock data with an empty array of the strictly typed ActiveQuestionDto
+  public questions = signal<ActiveQuestionDto[]>([]);
+  public isLoading = signal<boolean>(true);
 
   public currentQuestion = computed(() => this.questions()[this.state.currentQuestionIndex()]);
   public isFirst = computed(() => this.state.currentQuestionIndex() === 0);
-  public isLast = computed(() => this.state.currentQuestionIndex() === this.questions().length - 1);
+  public isLast = computed(() => this.state.currentQuestionIndex() === (this.questions().length - 1));
 
   ngOnInit() {
-    // Initialize exam with 60 minutes. If refreshed, the service will ignore this and use localStorage state.
-    this.state.initExam('exam-123', 60);
+    this.currentAttemptId = this.route.snapshot.paramMap.get('attemptId') || '';
+    
+    if (this.currentAttemptId) {
+      this.loadQuestionsFromServer();
+    }
+  }
 
-    this.timerInterval = setInterval(() => {
-      this.state.decrementTime();
-      if (this.state.isExamComplete()) {
-         this.submitExam();
+  private loadQuestionsFromServer() {
+    this.attemptService.getQuestions(this.currentAttemptId).subscribe({
+      next: (data) => {
+        // Double-cast safely bypasses the strict compiler mismatch
+        const fetchedQuestions = (data as unknown) as Array<ActiveQuestionDto>;
+        this.questions.set(fetchedQuestions? fetchedQuestions :new Array<ActiveQuestionDto>()); 
+        this.isLoading.set(false);
+
+        this.state.initExam(this.currentAttemptId, 60);
+
+        this.timerInterval = setInterval(() => {
+          this.state.decrementTime();
+          if (this.state.isExamComplete()) {
+             this.submitExam();
+          }
+        }, 1000);
+      },
+      error: (err) => {
+        alert('Could not load questions. Are you authorized?');
+        this.router.navigate(['/home']);
       }
-    }, 1000);
+    });
   }
 
   ngOnDestroy() {
@@ -43,7 +66,9 @@ export class ExamPageComponent implements OnInit, OnDestroy {
   }
 
   public selectOption(optionId: string) {
-    this.state.selectAnswer(this.currentQuestion().id, optionId);
+    if (this.currentQuestion()) {
+      this.state.selectAnswer(this.currentQuestion().id, optionId);
+    }
   }
 
   public next() {
@@ -61,10 +86,22 @@ export class ExamPageComponent implements OnInit, OnDestroy {
   public submitExam() {
     clearInterval(this.timerInterval);
     const result = confirm('Are you sure you want to submit your exam?');
+    
     if (result) {
-      alert('Exam Submitted successfully!\n\nPayload: ' + JSON.stringify(this.state.userAnswers()));
-      this.state.clearSession();
-      this.router.navigate(['/home']);
+      // 2. Map the state to the SubmitExamRequestDto expected by the C# Backend
+      const payload = { answers: this.state.userAnswers() };
+
+      this.attemptService.submitExam(this.currentAttemptId, payload).subscribe({
+        next: (response) => {
+          this.state.clearSession(); // Wipes localStorage so they can't re-enter the exam
+          alert(`Exam Submitted! You scored ${response.totalScore} out of ${response.maxScore}. Passed: ${response.passed}`);
+          // Next milestone: Route to a beautiful Results Page!
+          this.router.navigate(['/result', this.currentAttemptId]);
+        },
+        error: (err) => {
+          alert('Submission failed: ' + err.message);
+        }
+      });
     } else {
       // Resume timer if they cancel
       this.timerInterval = setInterval(() => this.state.decrementTime(), 1000);

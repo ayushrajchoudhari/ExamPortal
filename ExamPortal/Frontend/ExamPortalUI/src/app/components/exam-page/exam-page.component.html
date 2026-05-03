@@ -27,7 +27,7 @@
     <div class="ep-container exam-layout">
       <div class="ep-card question-area">
         <div class="ep-card-header">
-          <h2>{{ currentQuestion().text }}</h2>
+          <h2>{{ currentQuestion().questionText }}</h2>
           <p>Points: {{ currentQuestion().points }}</p>
         </div>
 
@@ -44,7 +44,7 @@
                 [checked]="state.userAnswers()[currentQuestion().id] === option.id"
                 (change)="selectOption(option.id)"
               />
-              {{ option.text }}
+              {{ option.optionText }}
             </label>
           }
         </div>
