@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExamService, ExamSetSummaryDto } from '../../services/exams/exam/exam.service';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-home-page',

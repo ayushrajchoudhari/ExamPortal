@@ -1,0 +1,91 @@
+<div class="ep-page-container">
+  
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-logo">
+        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+      </div>
+      <div class="ep-header-text">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1>Exam Portal Dashboard</h1>
+          <span class="admin-badge">ADMIN</span>
+        </div>
+        <p>Manage your examination sets and access controls</p>
+      </div>
+
+      <div style="margin-left: auto;">
+        <button class="ep-btn ep-btn-secondary" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main" style="align-items: flex-start;">
+    <div class="ep-container">
+
+      <div class="dashboard-controls">
+        <h2>My Examination Sets</h2>
+        <button class="ep-btn ep-btn-primary" (click)="createNewExam()">+ Create New Exam</button>
+      </div>
+
+      <div class="ep-card" style="padding: 0; overflow: hidden;">
+        
+        @if (isLoading()) {
+          <div style="padding: 32px; text-align: center;">Loading dashboard data...</div>
+        } @else if (errorMessage()) {
+          <div class="ep-alert" style="margin: 16px;">
+            <h4 class="ep-alert-title">System Error</h4>
+            <p class="ep-alert-text">{{ errorMessage() }}</p>
+          </div>
+        } @else if (exams().length === 0) {
+          <div style="padding: 48px; text-align: center; color: var(--color-gray);">
+            You have not created any Examination Sets yet. Click "Create New Exam" to begin.
+          </div>
+        } @else {
+          <div class="table-responsive">
+            <table class="ep-table">
+              <thead>
+                <tr>
+                  <th>Exam Name</th>
+                  <th>Questions</th>
+                  <th>Time Limit</th>
+                  <th>Pass Marks</th>
+                  <th>Accessibility</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (exam of exams(); track exam.id) {
+                  <tr>
+                    <td style="font-weight: 500; color: var(--color-dark);">{{ exam.title }}</td>
+                    <td>{{ exam.questionCount }}</td>
+                    <td>{{ exam.durationMinutes }} mins</td>
+                    <td>{{ exam.passingScore }}%</td>
+                    <td>
+                      @if (exam.isPublic) {
+                        <span class="access-badge public">Public</span>
+                      } @else {
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                          <span class="access-badge private">Private</span>
+                          <span class="secret-token">Token: {{ exam.secretToken }}</span>
+                        </div>
+                      }
+                    </td>
+                    <td style="text-align: right;">
+                      <div class="action-buttons">
+                        <button class="action-btn edit" (click)="editExam(exam.id)">Edit</button>
+                        <button class="action-btn delete" (click)="deleteExam(exam.id)">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+
+      </div>
+    </div>
+  </main>
+</div>
