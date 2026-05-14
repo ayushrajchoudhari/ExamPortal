@@ -1,4 +1,5 @@
 ﻿using ExamPortal.Application.DTOs.Admin;
+using ExamPortal.Application.Features.Exams.Commands;
 using ExamPortal.Application.Features.Exams.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +34,27 @@ public class AdminExamsController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateExam(CreateExamRequestDto request)
     {
-        return Ok(new { Message = "Exam creation endpoint ready to be wired to MediatR." });
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userIdClaim)) return Unauthorized();
+
+        var examId = await _mediator.Send(new CreateExamCommand(Guid.Parse(userIdClaim), request));
+        return Ok(new { ExamId = examId, Message = "Exam created successfully." });
+    }
+
+    [HttpDelete("delete/{examId}")]
+    public async Task<IActionResult> DeleteExam(Guid examId)
+    {
+        try
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim)) return Unauthorized();
+
+            await _mediator.Send(new DeleteExamCommand(examId, Guid.Parse(userIdClaim)));
+            return Ok(new { Message = "Exam deleted successfully." });
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Forbid(ex.Message); // Returns a 403 Forbidden if they don't own the exam
+        }
     }
 }

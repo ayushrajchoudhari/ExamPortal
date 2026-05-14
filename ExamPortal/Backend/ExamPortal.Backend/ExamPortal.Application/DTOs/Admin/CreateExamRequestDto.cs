@@ -4,5 +4,6 @@ public record CreateExamRequestDto(
     string Title,
     int DurationMinutes,
     decimal PassingScore,
-    string InstructionContent
+    string InstructionContent,
+    bool IsPublic
 );
