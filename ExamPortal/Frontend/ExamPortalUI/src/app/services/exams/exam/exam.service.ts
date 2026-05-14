@@ -19,6 +19,6 @@ export class ExamService {
   private readonly apiUrl = 'https://localhost:7178/api/exams';
 
   public getAvailableExams(): Observable<ExamSetSummaryDto[]> {
-    return this.http.get<ExamSetSummaryDto[]>(`${this.apiUrl}/available`);
+    return this.http.get<ExamSetSummaryDto[]>(`${this.apiUrl}/Available`);
   }
 }

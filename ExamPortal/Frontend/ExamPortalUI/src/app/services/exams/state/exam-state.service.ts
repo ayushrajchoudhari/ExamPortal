@@ -1,7 +1,3 @@
-
-
-
-
 import { Injectable, signal, computed, effect } from '@angular/core';
 
 export interface ExamSessionState {

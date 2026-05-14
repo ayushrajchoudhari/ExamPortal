@@ -16,18 +16,18 @@ export class AttemptService {
   private readonly apiUrl = 'https://localhost:7178/api/attempts';
 
   public startAttempt(examSetId: string): Observable<StartAttemptResponseDto> {
-    return this.http.post<StartAttemptResponseDto>(`${this.apiUrl}/start`, { examSetId });
+    return this.http.post<StartAttemptResponseDto>(`${this.apiUrl}/Start`, { examSetId });
   }
 
   public getQuestions(attemptId: string): Observable<ActiveQuestionDto> {
-    return this.http.get<ActiveQuestionDto>(`${this.apiUrl}/${attemptId}/questions`);
+    return this.http.get<ActiveQuestionDto>(`${this.apiUrl}/${attemptId}/Questions`);
   }
 
   public submitExam(attemptId: string, payload: SubmitExamRequestDto): Observable<SubmitExamResponseDto> {
-    return this.http.post<SubmitExamResponseDto>(`${this.apiUrl}/${attemptId}/submit`, payload);
+    return this.http.post<SubmitExamResponseDto>(`${this.apiUrl}/${attemptId}/Submit`, payload);
   }
 
   public getResult(attemptId: string): Observable<ExamResultDto> {
-    return this.http.get<ExamResultDto>(`${this.apiUrl}/${attemptId}/result`);
+    return this.http.get<ExamResultDto>(`${this.apiUrl}/${attemptId}/Result`);
   }
 }
