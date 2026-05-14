@@ -1,35 +1,33 @@
 <div class="ep-page-container">
-  
   <header class="ep-header">
     <div class="ep-header-content">
       <div class="ep-header-logo">
-        <img src="/assets/favicon_io_dark/android-chrome-192x192.png" alt="EP." width="44" height="44">
+        <img
+          src="/assets/favicon_io_dark/android-chrome-192x192.png"
+          alt="EP."
+          width="44"
+          height="44"
+        />
       </div>
       <div class="ep-header-text">
         <h1>Available Examinations</h1>
         <p>Select an exam module below to view its instructions and begin your test.</p>
       </div>
 
-      <div style="margin-left: auto;">
+      <div style="margin-left: auto">
         @if (authService.isAuthenticated()) {
-          <button class="ep-btn ep-btn-secondary" (click)="logout()">
-            Logout
-          </button>
+          <button class="ep-btn ep-btn-secondary" (click)="logout()">Logout</button>
         } @else {
-          <button class="ep-btn ep-btn-primary" (click)="navigateToLogin()">
-            Login / Sign Up
-          </button>
+          <button class="ep-btn ep-btn-primary" (click)="navigateToLogin()">Login / Sign Up</button>
         }
       </div>
-
     </div>
   </header>
 
-  <main class="ep-main" style="align-items: flex-start;">
+  <main class="ep-main" style="align-items: flex-start">
     <div class="ep-container">
-
       @if (isLoading()) {
-        <div class="ep-card" style="text-align: center;">
+        <div class="ep-card" style="text-align: center">
           <p>Loading available exams...</p>
         </div>
       } @else if (errorMessage()) {
@@ -38,7 +36,7 @@
           <p class="ep-alert-text">{{ errorMessage() }}</p>
         </div>
       } @else if (exams().length === 0) {
-        <div class="ep-card" style="text-align: center;">
+        <div class="ep-card" style="text-align: center">
           <p>There are no active exams available at this time.</p>
         </div>
       } @else {
@@ -47,20 +45,55 @@
             <div class="ep-card">
               <div class="ep-card-header">
                 <h2>{{ exam.title }}</h2>
-                <p>Time Limit: <strong>{{ exam.durationMinutes }} minutes</strong></p>
-                <p>Passing Requirement: <strong>{{ exam.passingScore }}%</strong></p>
+                <p>
+                  Time Limit: <strong>{{ exam.durationMinutes }} minutes</strong>
+                </p>
+                <p>
+                  Passing Requirement: <strong>{{ exam.passingScore }}%</strong>
+                </p>
               </div>
-              
+
               <div class="home-card-actions">
-                <button class="ep-btn ep-btn-primary" (click)="viewInstructions(exam.id)">
-                  View Instructions
+                <button
+                  class="ep-btn ep-btn-primary"
+                  (click)="viewInstructions(exam.id, exam.isPublic)"
+                >
+                  {{ exam.isPublic ? 'View Instructions' : 'Enter Private Exam' }}
                 </button>
               </div>
             </div>
           }
         </div>
       }
-
     </div>
   </main>
 </div>
+@if (selectedPrivateExamId()) {
+  <div class="ep-modal-overlay">
+    <div class="ep-card ep-modal">
+      <div class="ep-card-header">
+        <h2>Private Examination</h2>
+        <p>This exam requires a secret token to proceed.</p>
+      </div>
+      
+      @if (tokenError()) {
+        <div class="ep-alert" style="margin-bottom: 16px;">
+          <h4 class="ep-alert-title">Access Denied</h4>
+          <p class="ep-alert-text">{{ tokenError() }}</p>
+        </div>
+      }
+
+      <div class="ep-form-group">
+        <label>Secret Token</label>
+        <input type="text" [(ngModel)]="secretTokenInput" class="ep-input" placeholder="Enter your token..." />
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+        <button class="ep-btn ep-btn-secondary" (click)="cancelToken()" [disabled]="isValidating()">Cancel</button>
+        <button class="ep-btn ep-btn-primary" (click)="submitToken()" [disabled]="isValidating() ||!secretTokenInput()">
+          {{ isValidating()? 'Validating...' : 'Verify Token' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}

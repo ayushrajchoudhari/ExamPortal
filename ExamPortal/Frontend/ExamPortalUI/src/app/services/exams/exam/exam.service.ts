@@ -1,13 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface ExamSetSummaryDto {
-  id: string;
-  title: string;
-  durationMinutes: number;
-  passingScore: number;
-}
+import { ExamSetSummaryDto } from '../../../interfaces/exam-set-summary-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +13,6 @@ export class ExamService {
   private readonly apiUrl = 'https://localhost:7178/api/exams';
 
   public getAvailableExams(): Observable<ExamSetSummaryDto[]> {
-    return this.http.get<ExamSetSummaryDto[]>(`${this.apiUrl}/Available`);
+    return this.http.get<ExamSetSummaryDto[]>(`${this.apiUrl}/AvailableExams`);
   }
 }

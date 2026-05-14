@@ -30,4 +30,8 @@ export class AttemptService {
   public getResult(attemptId: string): Observable<ExamResultDto> {
     return this.http.get<ExamResultDto>(`${this.apiUrl}/${attemptId}/Result`);
   }
+
+  public validateToken(payload: { examSetId: string, token: string }): Observable<{ isValid: boolean }> {
+    return this.http.post<{ isValid: boolean }>(`${this.apiUrl}/ValidateToken`, payload);
+  }
 }
