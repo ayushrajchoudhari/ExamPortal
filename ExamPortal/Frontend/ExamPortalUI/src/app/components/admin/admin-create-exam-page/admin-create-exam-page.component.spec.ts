@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminCreateExamComponent } from './admin-create-exam.component';
+import { AdminCreateExamComponent } from './admin-create-exam-page.component';
 
 describe('AdminCreateExamComponent', () => {
   let component: AdminCreateExamComponent;

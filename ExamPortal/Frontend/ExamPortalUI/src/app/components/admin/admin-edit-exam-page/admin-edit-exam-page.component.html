@@ -1,0 +1,140 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-text">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1>Edit Examination Content</h1>
+          <span class="admin-badge">ADMIN</span>
+        </div>
+        <p>Modify settings, questions, and answers for this ExamSet</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main" style="align-items: flex-start;">
+    <div class="ep-container" style="max-width: 900px;">
+      
+      @if (isLoading()) {
+        <div class="ep-card" style="text-align: center;">Loading Exam Details...</div>
+      } @else if (errorMessage()) {
+        <div class="ep-alert">
+          <h4 class="ep-alert-title">Error</h4>
+          <p class="ep-alert-text">{{ errorMessage() }}</p>
+          <button class="ep-btn ep-btn-secondary" style="margin-top: 12px;" (click)="cancel()">Back to Dashboard</button>
+        </div>
+      } @else if (formData()) {
+        <form (ngSubmit)="onSubmit()">
+          
+          <div class="ep-card" style="margin-bottom: 24px;">
+            <div class="ep-card-header">
+              <h2>Core Settings</h2>
+            </div>
+
+            <div class="ep-form-group">
+              <label>Exam Title</label>
+              <input type="text" name="title" [(ngModel)]="formData()!.title" required class="ep-input" />
+            </div>
+
+            <div class="ep-form-group-row">
+              <div class="ep-form-group">
+                <label>Duration (Minutes)</label>
+                <input type="number" name="duration" [(ngModel)]="formData()!.durationMinutes" required min="1" class="ep-input" />
+              </div>
+              <div class="ep-form-group">
+                <label>Passing Score (%)</label>
+                <input type="number" name="passingScore" [(ngModel)]="formData()!.passingScore" required min="1" max="100" class="ep-input" />
+              </div>
+            </div>
+
+            <div class="ep-form-group">
+              <label>Instructions</label>
+              <textarea name="instructions" [(ngModel)]="formData()!.instructionContent" required class="ep-input" rows="3"></textarea>
+            </div>
+
+            <div class="access-toggle-box" [class.private]="!formData()!.isPublic">
+              <div class="toggle-info">
+                <label>Exam Accessibility</label>
+                <p class="toggle-desc">
+                  {{ formData()!.isPublic? 'Public: Open to all candidates on the portal.' : 'Private: A Secret Token is required to access this exam.' }}
+                </p>
+                @if (!formData()!.isPublic && formData()!.secretToken) {
+                  <p style="margin-top: 8px; font-family: monospace; font-weight: bold; color: var(--color-primary);">Token: {{ formData()!.secretToken }}</p>
+                }
+              </div>
+              <label class="switch">
+                <input type="checkbox" name="isPublic" [(ngModel)]="formData()!.isPublic">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="questions-header">
+            <h2>Questions ({{ formData()!.questions.length }})</h2>
+            <button type="button" class="ep-btn ep-btn-secondary" (click)="addQuestion()">+ Add Question</button>
+          </div>
+
+          @for (q of formData()!.questions; track $index; let qIndex = $index) {
+            <div class="ep-card nested-question-card">
+              <div class="question-title-row">
+                <h3>Question {{ qIndex + 1 }}</h3>
+                <button type="button" class="ep-btn action-btn delete" (click)="removeQuestion(qIndex)">Remove</button>
+              </div>
+
+              <div class="ep-form-group-row">
+                <div class="ep-form-group" style="flex: 3;">
+                  <label>Question Text</label>
+                  <input type="text" [name]="'qText_' + qIndex" [(ngModel)]="q.questionText" required class="ep-input" />
+                </div>
+                <div class="ep-form-group" style="flex: 1;">
+                  <label>Points</label>
+                  <input type="number" [name]="'qPoints_' + qIndex" [(ngModel)]="q.points" required min="1" class="ep-input" />
+                </div>
+              </div>
+
+              <div class="options-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <label>Answer Options</label>
+                  <button type="button" class="action-btn text-link" (click)="addOption(qIndex)">+ Add Option</button>
+                </div>
+
+                @if (q.options.length === 0) {
+                  <p class="no-options-warning">Please add at least two options.</p>
+                }
+
+                @for (opt of q.options; track $index; let oIndex = $index) {
+                  <div class="option-row" [class.is-correct-row]="opt.isCorrect">
+                    <input type="radio" 
+                           [name]="'correct_opt_' + qIndex" 
+                           [value]="true" 
+                           [checked]="opt.isCorrect"
+                           (change)="markOptionCorrect(qIndex, oIndex)" 
+                           class="correct-radio" />
+                    
+                    <input type="text" 
+                           [name]="'optText_' + qIndex + '_' + oIndex" 
+                           [(ngModel)]="opt.optionText" 
+                           required 
+                           class="ep-input option-input" 
+                           placeholder="Option text..." />
+                    
+                    <button type="button" class="action-btn delete-icon" (click)="removeOption(qIndex, oIndex)">✕</button>
+                  </div>
+                }
+              </div>
+
+            </div>
+          }
+
+          <div class="sticky-save-bar">
+            <button type="button" class="ep-btn ep-btn-secondary" (click)="cancel()">Cancel</button>
+            <button type="submit" class="ep-btn ep-btn-primary" [disabled]="isSaving()">
+              {{ isSaving()? 'Saving Changes...' : 'Save Exam Content' }}
+            </button>
+          </div>
+
+        </form>
+      }
+
+    </div>
+  </main>
+</div>

@@ -8,10 +8,10 @@ import { CreateExamRequestDto } from '../../../interfaces/create-exam-request-dt
   selector: 'app-admin-create-exam',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './admin-create-exam.component.html',
-  styleUrl: './admin-create-exam.component.scss'
+  templateUrl: './admin-create-exam-page.component.html',
+  styleUrl: './admin-create-exam-page.component.scss'
 })
-export class AdminCreateExamComponent {
+export class AdminCreateExamPageComponent {
   private adminExamService = inject(AdminExamService);
   private router = inject(Router);
 

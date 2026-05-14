@@ -38,11 +38,11 @@ export class AdminHomePageComponent implements OnInit {
   }
 
   public createNewExam() {
-    this.router.navigate(['/admin/exams/create']);
+    this.router.navigate(['/admin/exams/createExam']);
   }
 
   public editExam(examId: string) {
-    this.router.navigate(['/admin/exams/edit', examId]);
+    this.router.navigate(['/admin/exams/editExam', examId]);
   }
 
   public deleteExam(examId: string) {

@@ -1,0 +1,190 @@
+/* Header Badge */
+.admin-badge {
+  background-color: var(--color-dark, #2d3748);
+  color: var(--color-white, #ffffff);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Accessibility Box & Switch */
+.access-toggle-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--color-gray-light, #e2e8f0);
+  border-radius: 8px;
+  background-color: var(--color-light, #f7fafc);
+  margin-top: 24px;
+  transition: all 0.3s ease;
+
+  &.private {
+    background-color: #fff5f5;
+    border-color: #fed7d7;
+  }
+
+ .toggle-info label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-dark, #2d3748);
+    display: block;
+    margin-bottom: 4px;
+  }
+ .toggle-desc {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-gray, #718096);
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+
+  input { opacity: 0; width: 0; height: 0; }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #e53e3e;
+  transition:.4s;
+  
+  &:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition:.4s;
+  }
+  &.round {
+    border-radius: 34px;
+    &:before { border-radius: 50%; }
+  }
+}
+
+input:checked +.slider { background-color: #38a169; }
+input:checked +.slider:before { transform: translateX(22px); }
+
+/* Nested Question Array Styling */
+.questions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0 16px 0;
+
+  h2 {
+    margin: 0;
+    color: var(--color-dark, #2d3748);
+  }
+}
+
+.nested-question-card {
+  margin-bottom: 24px;
+  border: 1px solid var(--color-gray-light, #e2e8f0);
+  box-shadow: none;
+}
+
+.question-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--color-gray-light, #e2e8f0);
+
+  h3 {
+    margin: 0;
+    color: var(--color-primary, #a3144e);
+  }
+}
+
+/* Options Nested Array Styling */
+.options-container {
+  background-color: var(--color-light, #f7fafc);
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.no-options-warning {
+  margin: 0;
+  color: #c53030;
+  font-size: 14px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+
+  &.is-correct-row {
+    background-color: #e6fffa;
+    border: 1px solid #c6f6d5;
+  }
+}
+
+.correct-radio {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #38a169;
+  flex-shrink: 0;
+}
+
+.option-input {
+  flex: 1;
+  padding: 8px 12px;
+}
+
+/* Specific Action Buttons */
+.action-btn {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover { opacity: 0.8; }
+
+  &.delete {
+    color: #e53e3e;
+    font-size: 14px;
+  }
+
+  &.text-link {
+    color: var(--color-primary, #a3144e);
+    font-size: 14px;
+  }
+
+  &.delete-icon {
+    color: var(--color-gray, #718096);
+    font-size: 18px;
+    padding: 0 8px;
+    &:hover { color: #e53e3e; }
+  }
+}
+
+/* Save Bar */
+.sticky-save-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-gray-light, #e2e8f0);
+}
