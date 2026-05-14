@@ -20,7 +20,7 @@ public class AdminExamsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("get")]
+    [HttpGet("GetMyExams")]
     public async Task<IActionResult> GetMyExams()
     {
         // Extract the logged-in admin's ID directly from the JWT token
@@ -31,7 +31,7 @@ public class AdminExamsController : ControllerBase
         return Ok(exams);
     }
 
-    [HttpPost("create")]
+    [HttpPost("CreateExam")]
     public async Task<IActionResult> CreateExam(CreateExamRequestDto request)
     {
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -41,7 +41,7 @@ public class AdminExamsController : ControllerBase
         return Ok(new { ExamId = examId, Message = "Exam created successfully." });
     }
 
-    [HttpDelete("delete/{examId}")]
+    [HttpDelete("DeleteExamById/{examId}")]
     public async Task<IActionResult> DeleteExam(Guid examId)
     {
         try
@@ -55,6 +55,40 @@ public class AdminExamsController : ControllerBase
         catch (UnauthorizedAccessException ex)
         {
             return Forbid(ex.Message); // Returns a 403 Forbidden if they don't own the exam
+        }
+    }
+
+    [HttpGet("GetExamById/{examId:guid}")]
+    public async Task<IActionResult> GetExamById(Guid examId)
+    {
+        try
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim)) return Unauthorized();
+
+            var exam = await _mediator.Send(new GetAdminExamByIdQuery(examId, Guid.Parse(userIdClaim)));
+            return Ok(exam);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Forbid(ex.Message);
+        }
+    }
+
+    [HttpPut("UpdateExamById/{examId:guid}")]
+    public async Task<IActionResult> UpdateExam(Guid examId, AdminExamDetailsDto payload)
+    {
+        try
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim)) return Unauthorized();
+
+            await _mediator.Send(new UpdateExamContentCommand(examId, Guid.Parse(userIdClaim), payload));
+            return Ok(new { Message = "Exam updated successfully." });
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Forbid(ex.Message);
         }
     }
 }
