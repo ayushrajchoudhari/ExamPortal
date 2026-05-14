@@ -10,7 +10,7 @@ import { AdminExamSetSummaryDto } from '../../../interfaces/admin-exam-set-summa
   templateUrl: './admin-home-page.component.html',
   styleUrl: './admin-home-page.component.scss'
 })
-export class AdminHomeComponent implements OnInit {
+export class AdminHomePageComponent implements OnInit {
   private adminExamService = inject(AdminExamService);
   public authService = inject(AuthService);
   private router = inject(Router);
@@ -49,15 +49,11 @@ export class AdminHomeComponent implements OnInit {
     const confirmDelete = confirm('Are you sure you want to permanently delete this ExamSet? This action cannot be undone.');
     
     if (confirmDelete) {
-      // Optimistically remove the exam from the UI signal
       this.exams.update(currentExams => currentExams.filter(e => e.id!== examId));
       
-      // Note: Uncomment this once we add the DELETE endpoint to the C# Backend
-      /*
       this.adminExamService.deleteExam(examId).subscribe({
         error: () => alert('Failed to delete the exam on the server.')
       });
-      */
     }
   }
 

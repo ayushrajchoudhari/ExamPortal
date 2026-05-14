@@ -1,0 +1,91 @@
+/* Admin Specific Header Badge */
+.admin-badge {
+  background-color: var(--color-dark, #2d3748);
+  color: var(--color-white, #ffffff);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Accessibility Box */
+.access-toggle-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--color-gray-light, #e2e8f0);
+  border-radius: 8px;
+  background-color: var(--color-light, #f7fafc);
+  margin-top: 24px;
+  transition: all 0.3s ease;
+
+  &.private {
+    background-color: #fff5f5;
+    border-color: #fed7d7;
+  }
+
+ .toggle-info label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-dark, #2d3748);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+ .toggle-desc {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-gray, #718096);
+  }
+}
+
+/* CSS Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #e53e3e; /* Red for Private */
+  transition:.4s;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition:.4s;
+  }
+
+  &.round {
+    border-radius: 34px;
+    &:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+input:checked +.slider {
+  background-color: #38a169; /* Green for Public */
+}
+
+input:checked +.slider:before {
+  transform: translateX(22px);
+}

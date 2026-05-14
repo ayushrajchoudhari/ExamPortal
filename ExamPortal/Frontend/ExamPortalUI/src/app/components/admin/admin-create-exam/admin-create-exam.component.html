@@ -1,0 +1,75 @@
+<div class="ep-page-container">
+  
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-text">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1>Create Examination Set</h1>
+          <span class="admin-badge">ADMIN</span>
+        </div>
+        <p>Define a new exam module and set its accessibility controls</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main" style="align-items: flex-start;">
+    <div class="ep-container" style="max-width: 800px;">
+      <div class="ep-card">
+        
+        @if (errorMessage()) {
+          <div class="ep-alert" style="margin-bottom: 24px;">
+            <h4 class="ep-alert-title">Creation Failed</h4>
+            <p class="ep-alert-text">{{ errorMessage() }}</p>
+          </div>
+        }
+
+        <form (ngSubmit)="onSubmit()">
+          
+          <div class="ep-form-group">
+            <label>Exam Title</label>
+            <input type="text" name="title" [(ngModel)]="formData().title" required class="ep-input" placeholder="e.g., Advanced Entity Framework Core" />
+          </div>
+
+          <div class="ep-form-group-row">
+            <div class="ep-form-group">
+              <label>Duration (Minutes)</label>
+              <input type="number" name="duration" [(ngModel)]="formData().durationMinutes" required min="1" class="ep-input" />
+            </div>
+            <div class="ep-form-group">
+              <label>Passing Score (%)</label>
+              <input type="number" name="passingScore" [(ngModel)]="formData().passingScore" required min="1" max="100" class="ep-input" />
+            </div>
+          </div>
+
+          <div class="ep-form-group">
+            <label>Initial Instructions</label>
+            <textarea name="instructions" [(ngModel)]="formData().instructionContent" required class="ep-input" rows="4" placeholder="Enter the rules, guidelines, and technical requirements..."></textarea>
+          </div>
+
+          <div class="access-toggle-box" [class.private]="!formData().isPublic">
+            <div class="toggle-info">
+              <label>Exam Accessibility</label>
+              <p class="toggle-desc">
+                {{ formData().isPublic? 'Public: Open to all candidates on the portal.' : 'Private: A Secret Token will be generated. Candidates must enter it to begin.' }}
+              </p>
+            </div>
+            
+            <label class="switch">
+              <input type="checkbox" name="isPublic" [(ngModel)]="formData().isPublic">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div style="margin-top: 32px; display: flex; justify-content: flex-end; gap: 16px;">
+            <button type="button" class="ep-btn ep-btn-secondary" (click)="cancel()">Cancel</button>
+            <button type="submit" class="ep-btn ep-btn-primary" [disabled]="isLoading() ||!formData().title ||!formData().instructionContent">
+              {{ isLoading()? 'Saving...' : 'Save & Create Exam' }}
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
