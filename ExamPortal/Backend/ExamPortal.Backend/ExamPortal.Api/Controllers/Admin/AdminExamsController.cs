@@ -20,6 +20,7 @@ public class AdminExamsController : ControllerBase
         _mediator = mediator;
     }
 
+    #region - Get All Exams for Admin
     [HttpGet("GetMyExams")]
     public async Task<IActionResult> GetMyExams()
     {
@@ -30,7 +31,9 @@ public class AdminExamsController : ControllerBase
         var exams = await _mediator.Send(new GetAdminExamSetsQuery(Guid.Parse(userIdClaim)));
         return Ok(exams);
     }
+    #endregion
 
+    #region - Create Exam
     [HttpPost("CreateExam")]
     public async Task<IActionResult> CreateExam(CreateExamRequestDto request)
     {
@@ -40,7 +43,9 @@ public class AdminExamsController : ControllerBase
         var examId = await _mediator.Send(new CreateExamCommand(Guid.Parse(userIdClaim), request));
         return Ok(new { ExamId = examId, Message = "Exam created successfully." });
     }
+    #endregion
 
+    #region - Delete Exam By Id
     [HttpDelete("DeleteExamById/{examId}")]
     public async Task<IActionResult> DeleteExam(Guid examId)
     {
@@ -57,7 +62,9 @@ public class AdminExamsController : ControllerBase
             return Forbid(ex.Message); // Returns a 403 Forbidden if they don't own the exam
         }
     }
+    #endregion
 
+    #region - Get Exam By Id
     [HttpGet("GetExamById/{examId:guid}")]
     public async Task<IActionResult> GetExamById(Guid examId)
     {
@@ -74,7 +81,9 @@ public class AdminExamsController : ControllerBase
             return Forbid(ex.Message);
         }
     }
+    #endregion
 
+    #region - Update Exam By Id
     [HttpPut("UpdateExamById/{examId:guid}")]
     public async Task<IActionResult> UpdateExam(Guid examId, AdminExamDetailsDto payload)
     {
@@ -91,4 +100,5 @@ public class AdminExamsController : ControllerBase
             return Forbid(ex.Message);
         }
     }
+    #endregion
 }

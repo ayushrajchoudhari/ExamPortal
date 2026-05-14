@@ -16,7 +16,8 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost("login")]
+    #region - Login
+    [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginRequestDto request)
     {
         try
@@ -29,4 +30,5 @@ public class AuthController : ControllerBase
             return Unauthorized(new { message = ex.Message });
         }
     }
+    #endregion
 }

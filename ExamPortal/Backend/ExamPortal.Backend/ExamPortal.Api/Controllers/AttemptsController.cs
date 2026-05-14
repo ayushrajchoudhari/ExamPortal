@@ -21,7 +21,7 @@ public class AttemptsController : ControllerBase
     }
 
     #region - Start Exam Attempt
-    [HttpPost("start")]
+    [HttpPost("Start")]
     public async Task<IActionResult> StartAttempt(StartAttemptRequestDto request)
     {
         // Securely extract the logged-in user's ID directly from the JWT claims
@@ -39,7 +39,7 @@ public class AttemptsController : ControllerBase
     #endregion
 
     #region - Get Active Exam Questions
-    [HttpGet("{attemptId:guid}/questions")]
+    [HttpGet("{attemptId:guid}/Questions")]
     public async Task<IActionResult> GetQuestions(Guid attemptId)
     {
         try
@@ -56,7 +56,7 @@ public class AttemptsController : ControllerBase
     #endregion
 
     #region - Submit Exam Attempt
-    [HttpPost("{attemptId:guid}/submit")]
+    [HttpPost("{attemptId:guid}/Submit")]
     public async Task<IActionResult> SubmitExam(Guid attemptId, SubmitExamRequestDto request)
     {
         try
@@ -73,7 +73,7 @@ public class AttemptsController : ControllerBase
     #endregion
 
     #region - Get Result
-    [HttpGet("{attemptId:guid}/result")]
+    [HttpGet("{attemptId:guid}/Result")]
     public async Task<IActionResult> GetResult(Guid attemptId)
     {
         try
@@ -86,6 +86,21 @@ public class AttemptsController : ControllerBase
         {
             return BadRequest(new { message = ex.Message });
         }
+    }
+    #endregion
+
+    #region - Validate Exam Token
+    [HttpPost("ValidateToken")]
+    public async Task<IActionResult> ValidateToken(ValidateTokenRequestDto request)
+    {
+        var isValid = await _mediator.Send(new ValidateExamTokenQuery(request.ExamSetId, request.Token));
+
+        if (!isValid)
+        {
+            return BadRequest(new { message = "Invalid secret token. Access denied." });
+        }
+
+        return Ok(new { IsValid = true });
     }
     #endregion
 }

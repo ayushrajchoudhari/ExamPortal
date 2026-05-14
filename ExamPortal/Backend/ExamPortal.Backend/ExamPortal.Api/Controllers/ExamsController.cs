@@ -18,7 +18,7 @@ public class ExamsController : ControllerBase
     }
 
     #region - Get Available Exams
-    [HttpGet("available")]
+    [HttpGet("AvailableExams")]
     public async Task<IActionResult> GetAvailableExams()
     {
         var exams = await _mediator.Send(new GetAvailableExamsQuery());
@@ -33,7 +33,7 @@ public class ExamsController : ControllerBase
     #endregion
 
     #region - Get Exam Instructions
-    [HttpGet("{id:guid}/instructions")]
+    [HttpGet("{id:guid}/Instructions")]
     public async Task<IActionResult> GetInstructions(Guid id)
     {
         try
