@@ -101,4 +101,24 @@ public class AdminExamsController : ControllerBase
         }
     }
     #endregion
+
+    #region - Get Exam Report By Id
+    [HttpGet("{examId:guid}/Report")]
+    public async Task<IActionResult> GetExamReport(Guid examId)
+    {
+        try
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim)) return Unauthorized();
+
+            var report = await _mediator.Send(new GetExamSetReportQuery(examId, Guid.Parse(userIdClaim)));
+            return Ok(report);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Forbid(ex.Message);
+        }
+    }
+    #endregion
+
 }
