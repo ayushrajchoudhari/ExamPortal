@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AdminExamSetSummaryDto } from '../../interfaces/admin-exam-set-summary-dto';
 import { CreateExamRequestDto } from '../../interfaces/create-exam-request-dto';
 import { AdminExamDetailsDto } from '../../interfaces/admin-exam-details-dto';
+import { AdminExamReportDto } from '../../interfaces/admin-exam-report-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,10 @@ export class AdminExamService {
   // UpdateExamById Endpoint
   public updateExam(examId: string, payload: AdminExamDetailsDto): Observable<{ message: string }> {
     return this.http.put<{ message: string }>(`${this.apiUrl}/UpdateExamById/${examId}`, payload);
+  }
+
+  // GetExamReport Endpoint
+  public getExamReport(examId: string): Observable<AdminExamReportDto> {
+    return this.http.get<AdminExamReportDto>(`${this.apiUrl}/${examId}/report`);
   }
 }

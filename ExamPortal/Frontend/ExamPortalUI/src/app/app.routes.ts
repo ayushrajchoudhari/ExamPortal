@@ -7,6 +7,7 @@ import { ResultPageComponent } from './components/result-page/result-page.compon
 import { AdminHomePageComponent } from './components/admin/admin-home-page/admin-home-page.component';
 import { AdminCreateExamPageComponent } from './components/admin/admin-create-exam-page/admin-create-exam-page.component';
 import { AdminEditExamPageComponent } from './components/admin/admin-edit-exam-page/admin-edit-exam-page.component';
+import { AdminExamReportPageComponent } from './components/admin/admin-exam-report-page/admin-exam-report-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,5 +21,6 @@ export const routes: Routes = [
   { path: 'admin/home', component: AdminHomePageComponent },
   { path: 'admin/exams/createExam', component: AdminCreateExamPageComponent },
   { path: 'admin/exams/editExam/:id', component: AdminEditExamPageComponent },
+  { path: 'admin/exams/report/:id', component: AdminExamReportPageComponent },
   { path: '**', redirectTo: '/home' }
 ];

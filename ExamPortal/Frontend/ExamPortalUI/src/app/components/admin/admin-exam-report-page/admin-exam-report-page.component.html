@@ -1,0 +1,79 @@
+<div class="ep-page-container">
+  <header class="ep-header">
+    <div class="ep-header-content">
+      <div class="ep-header-text">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1>Exam Analytics Report</h1>
+          <span class="admin-badge">ADMIN</span>
+        </div>
+        <p>Review candidate performance and submissions</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="ep-main" style="align-items: flex-start;">
+    <div class="ep-container">
+      
+      <div style="margin-bottom: 24px;">
+        <button class="ep-btn ep-btn-secondary" (click)="goBack()">← Back to Dashboard</button>
+      </div>
+
+      <div class="ep-card" style="padding: 0; overflow: hidden;">
+        @if (isLoading()) {
+          <div style="padding: 32px; text-align: center;">Loading report data...</div>
+        } @else if (errorMessage()) {
+          <div class="ep-alert" style="margin: 16px;">
+            <h4 class="ep-alert-title">System Error</h4>
+            <p class="ep-alert-text">{{ errorMessage() }}</p>
+          </div>
+        } @else if (report()) {
+          
+          <div style="padding: 24px; border-bottom: 1px solid var(--color-gray-light);">
+            <h2 style="margin: 0; color: var(--color-dark);">{{ report()!.examTitle }}</h2>
+            <p style="margin: 8px 0 0 0; color: var(--color-gray);">Passing Score Required: {{ report()!.passingScore }} Points</p>
+          </div>
+
+          @if (report()!.candidates.length === 0) {
+            <div style="padding: 48px; text-align: center; color: var(--color-gray);">
+              No candidates have taken this examination yet.
+            </div>
+          } @else {
+            <div class="table-responsive">
+              <table class="ep-table">
+                <thead>
+                  <tr>
+                    <th>Candidate Email</th>
+                    <th>Started</th>
+                    <th>Submitted</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (candidate of report()!.candidates; track candidate.email) {
+                    <tr>
+                      <td style="font-weight: 500; color: var(--color-dark);">{{ candidate.email }}</td>
+                      <td>{{ candidate.startTime | date:'short' }}</td>
+                      <td>{{ candidate.endTime? (candidate.endTime | date:'short') : 'In Progress' }}</td>
+                      <td>{{ candidate.totalScore!== null? candidate.totalScore : '-' }}</td>
+                      <td>
+                        @if (!candidate.endTime) {
+                          <span class="access-badge" style="background-color: #ebf8ff; color: #3182ce; border: 1px solid #bee3f8;">Active</span>
+                        } @else if (candidate.passed) {
+                          <span class="access-badge public">Passed</span>
+                        } @else {
+                          <span class="access-badge private">Failed</span>
+                        }
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        }
+      </div>
+
+    </div>
+  </main>
+</div>
